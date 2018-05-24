@@ -7,7 +7,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo RUTA ?>css/estilos.css">
+		<link rel="stylesheet" href="<?php echo RUTA ?>/css/estilos.css">
 		<title>Document</title>
 	</head>
 	<body>
@@ -16,7 +16,7 @@
 				<div class="logo izquierda">
 					<p><a href="<?php echo RUTA ;?>">Aventon</a></p>
 				</div>
-
+				<img  src="imagenes/Logo.jpg" alt="" title"imagen abc" width="100px" height="100px"/>
 				<div class="derecha">
 					<form name="busqueda" class="buscar" action="<?php echo RUTA; ?>/buscar.php" method="get">
 					<input type="text" name="busqueda" placeholder="Buscar"> 
@@ -28,6 +28,8 @@
 							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 							<li><a href="#">Contacto <i class="fa fa-envelope"></i></a></li>
+							<li><a href="login.php">Iniciar Sesion</a></li>
+							<li><a href="../login_registro/registrate.php">Registrase</a></li>
 						</ul>
 					</nav>
 				</div>

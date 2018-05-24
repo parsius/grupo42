@@ -12,7 +12,7 @@
 	if(!$posts){
 		header('Location: error.php');
 	}
-
+	
 	
 	require 'views/indexView.php';
 ?>

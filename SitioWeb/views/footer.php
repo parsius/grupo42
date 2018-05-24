@@ -1,5 +1,5 @@
 <footer>
-			<p class="copyright">Fefe Corp</p>
+			<p class="copyright">SO.TE.ES solutions</p>
 		</footer>
 	</body>
 </html>
