@@ -25,11 +25,21 @@
 
 					<nav class="menu">
 						<ul>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#">Contacto <i class="fa fa-envelope"></i></a></li>
-							<li><a href="login.php">Iniciar Sesion</a></li>
-							<li><a href="../login_registro/registrate.php">Registrase</a></li>
+							<?php
+								session_start(); 
+								if (isset($_SESSION['usuario'])) {
+									?>
+									<li><a href="#">Contacto <i class="fa fa-envelope"></i></a></li>
+									<li><a href="../SitioWeb/admin/cerrar.php">Cerrrar session</a></li>
+									<li><a href="../login_registro/registrate.php">Ver perfil</a></li>
+									<li><a href="../login_registro/crearVehiculo.php">Crear vehiculo</a></li>
+								<?php
+
+								}else{?>
+								<li><a href="#">Contacto <i class="fa fa-envelope"></i></a></li>
+								<li><a href="../login_registro/login.php">Iniciar Sesion</a></li>
+								<li><a href="../login_registro/registrate.php">Registrase</a></li>
+							<?php } ?>
 						</ul>
 					</nav>
 				</div>

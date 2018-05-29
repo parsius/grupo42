@@ -38,7 +38,7 @@ a:hover {
 .border {
 	border:none;
 	margin-bottom: 5px; 
-	border-top:10px solid #000000;
+	border-top: 10px solid #000000;
 	background: none;
 	color:none;
 }
@@ -55,7 +55,7 @@ a:hover {
 }
 
 .formulario input[type="text"],
-.formulario input[type="password"] {
+.formulario input[type="password"]{
 	padding: 15px;
 	font-family: 'Raleway', sans-serif;
 	font-size: 18px;
@@ -135,6 +135,7 @@ a:hover {
 .texto-registrate a {
 	display: block;
 	font-size: 18px;
+
 }
 
 .contenido article {

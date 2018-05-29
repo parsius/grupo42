@@ -3,7 +3,7 @@
 
 <?php 
 try{
-		$conexion=new PDO('mysql:host=localhost;dbname=sitioweb','root','');
+		$conexion=new PDO('mysql:host=localhost;dbname=aventon','root','');
 	}catch (PDOExeption $e){
 		echo "Error:" . $e->getMessage();
     ?>
@@ -22,7 +22,7 @@ if($row=mysql_fetch_array($user) )
 {
  ?>
 <li>Modelo:<?php echo $row['nusuario'];?> </li>
-<li>Marca: <?php echo $row['email'];?> </li>;<?php
+<li>Marca: <?php echo $row['email'];?></li>;<?php
 }else{
 echo 'No existe el usuario que buscas';
 }

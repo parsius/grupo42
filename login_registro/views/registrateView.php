@@ -24,10 +24,13 @@
 					<i class="icono izquierda fa fa-user"></i><input type="text" name="apellido" class="usuario" placeholder="Apellido">
 				</div>
 				<div class="form-group">
-					<i class="icono izquierda fa fa-user"></i><input type="text" name="fecha" class="usuario" placeholder="Fecha de nacimiento">
+					<i class="icono izquierda fa fa-user"></i><input type="date" name="fecha" class="usuario" placeholder="Fecha de nacimiento">
 				</div>
 				<div class="form-group">
 					<i class="icono izquierda fa fa-user"></i><input type="text" name="dni" class="usuario" placeholder="DNI">
+				</div>
+				<div class="form-group">
+					<i class="icono izquierda fa fa-user"></i><input type="text" name="email" class="usuario" placeholder="Email">
 				</div>
 				<div class="form-group">
 					<i class="icono izquierda fa fa-lock"></i><input type="password" name="password" class="password" placeholder="Contraseña">
@@ -47,7 +50,7 @@
 			</form>
 			<p class="text-registrate">
 				¿ Ya tienes cuenta?
-				<a href="login.php">Iniciar Sesion</a>
+				<a href="../login_registro/login.php">Iniciar Sesion</a>
 		</div>
 		
 	</body>
