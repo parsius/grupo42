@@ -1,14 +1,20 @@
 <?php
-	require '../SitioWeb/functions.php';
 	session_start();
+//	if(isset($_SESSION['usuario'])){
+//		header('Location: index.php');
+//	}
 	$usuario=$_SESSION['usuario'];
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
-		$dominio=$_POST['dominio'];
+		$origen=$_POST['origen'];
+		$hora=$_POST['hora'];
 		$tipo=$_POST['tipo'];
-		$capacidad=$_POST['capacidad'];
-		$modelo=$_POST['modelo'];
+		$destino=$_POST['destino'];
+		$fecha=$_POST['fecha'];
+	//	$dominio=$_POST['dominio'];
+		
+	//	echo "$usuario" . "$password" . "$password2";
 		$errores='';
-		if(empty($dominio)or empty($tipo) or empty($capacidad) or empty($modelo)){
+		if(empty($origen)or empty($hora) or empty($tipo) or empty($destino) or empty($fecha)){
 			$errores.='<li>Por favor rellena todos los campos correctamente </li>';
 		}else{
 			try{
@@ -19,29 +25,25 @@
 	    		foreach ($resultado as $row) {
 	    			$user=$row['usuario'];
 	    		}	
-				//$ex=$conexion->prepare("SELECT * FROM usuario WHERE usuario = '" . $usuario . "'");
-				//$result=$ex->execute();
-				
 			}catch(PDOExeption $e){
 				echo "Error:".$e->getMessage();
 			}
 		}
 		if($errores==''){
-			$statement=$conexion->prepare('INSERT INTO vehiculos(idauto,dominio,tipo,capacidad,modelo,idusuario3) VALUES (null,:dominio,:tipo,:capacidad,
-			:modelo, :id)');
+			$statement=$conexion->prepare('INSERT INTO viajes(id,origen,destino,fecha,tipo,hora,idusuario2) VALUES (null,:origen,:destino,:fecha,:tipo,:hora,:id)');
 			$statement->execute(array(
-				':dominio'=>$dominio,
+				':origen'=>$origen,
+				':destino'=>$destino,
+				':fecha'=>$fecha,
 				':tipo'=>$tipo,
-				':capacidad'=>$capacidad,
-				':modelo'=>$modelo,
+				':hora'=>$hora,
 				':id'=>$user,
-
 				));
-			header('Location: ../SitioWeb/index.php');
+			header('Location: index.php');
 		}
 		
 	}
 
-	require 'views/crearVehiculoView.php';
+	require 'views/publicarViajeView.php';
 
 ?>

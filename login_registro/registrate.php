@@ -1,4 +1,5 @@
 <?php
+	require '../SitioWeb/functions.php';
 	session_start();
 	if(isset($_SESSION['usuario'])){
 		header('Location: index.php');
@@ -36,6 +37,14 @@
 			if($password != $password2){
 				$errores .='<li>Las contraseñas no coinciden</li>';
 			}
+
+			if (getAge($fecha) == true) {
+				$errores .= '';
+			}else{
+				$errores .='<li>No cumple con la edad requerida</li>';
+			//	header('Location: ../SitioWeb/index.php');
+			}
+
 		}
 		if($errores==''){
 			$statement=$conexion->prepare('INSERT INTO usuario(id,nombre,usuario,apellido,email,pass,dni,fecha) VALUES (null,:nombre,:usuario,:apellido,

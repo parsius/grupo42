@@ -31,18 +31,21 @@
 									?>
 									<li><a href="#">Contacto <i class="fa fa-envelope"></i></a></li>
 									<li><a href="../SitioWeb/admin/cerrar.php">Cerrrar session</a></li>
-									<li><a href="../login_registro/registrate.php">Ver perfil</a></li>
+									<li><a href="#">Ver perfil</a></li>
 									<li><a href="../login_registro/crearVehiculo.php">Crear vehiculo</a></li>
+									<li><a href="../SitioWeb/publicarViaje.php">Publicar viaje</a></li>
+									<li><a href="#">Listar vehiculos</a></li>
+									<li><a href="../SitioWeb/admin/editarVehiculo.php">Editar vehiculos</a></li>
+									<li ><?php echo $_SESSION['usuario']?></li>
 								<?php
-
 								}else{?>
 								<li><a href="#">Contacto <i class="fa fa-envelope"></i></a></li>
 								<li><a href="../login_registro/login.php">Iniciar Sesion</a></li>
-								<li><a href="../login_registro/registrate.php">Registrase</a></li>
+								<li><a href="../login_registro/registrate.php">Registrarse</a></li>
 							<?php } ?>
 						</ul>
 					</nav>
 				</div>
 			</div>
 		</header>
-		
+		                     

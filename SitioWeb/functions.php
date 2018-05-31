@@ -1,7 +1,7 @@
 <?php 
-	function conexion($bd_config){
+	function conexion(){
 		try {
-			$conexion=new PDO('mysql:host=localhost;dbname='.$bd_config['basedatos'], $bd_config['usuario'], $bd_config['pass']);
+			$conexion=new PDO('mysql:host=localhost;dbname=aventon', 'root','');
 			return $conexion;
 		}catch (PDOExeption $e){
 			return false;
@@ -31,10 +31,12 @@
 	}
 
 	function obtener_post_por_id($conexion, $id){
-		$resultado = $conexion->query("SELECT * FROM viajes WHERE id = $id LIMIT 1");
+		$resultado = $conexion->query("SELECT * FROM viajes WHERE id = $id ");
 		$resultado = $resultado->fetchAll();
 		return($resultado) ? $resultado : false;
 	}
+	
+
 
 	function numero_paginas($post_por_pagina,$conexion){
 		$total_post = $conexion->prepare('SELECT FOUND_ROWS() as total');
@@ -61,5 +63,32 @@
 		if(!isset($_SESSION['admin'])){
 			header('Location:' . RUTA);
 		}
+	}
+
+	function getAge ($fecha)
+    {
+
+        $mayor=18;
+
+        //Creamos objeto fecha desde los valores recibidos
+        $nacio = DateTime::createFromFormat('Y-m-d', $fecha);
+
+        //Calculamos usando diff y la fecha actual
+        $calculo = $nacio->diff(new DateTime());
+
+        //Obtenemos la edad
+        $edad=  $calculo->y;    
+
+        if ($edad < $mayor) 
+        {
+           // echo "Usted es menor de edad. Su edad es: $edad\n";
+            return false;  
+         }else{
+           // echo "Usted es mayor de edad. Su edad es: $edad\n";
+            return true;  
+        }
+    }
+    function id_usuario($id){
+		return (string)$id;
 	}
 ?>
