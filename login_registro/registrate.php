@@ -42,7 +42,7 @@
 				$errores .= '';
 			}else{
 				$errores .='<li>No cumple con la edad requerida</li>';
-			//	header('Location: ../SitioWeb/index.php');
+				
 			}
 
 		}

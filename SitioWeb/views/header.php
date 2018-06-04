@@ -8,7 +8,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo RUTA ?>/css/estilos.css">
-		<title>Document</title>
+		<title>Aventon</title>
 	</head>
 	<body>
 		<header>
@@ -36,7 +36,8 @@
 									<li><a href="../SitioWeb/publicarViaje.php">Publicar viaje</a></li>
 									<li><a href="#">Listar vehiculos</a></li>
 									<li><a href="../SitioWeb/admin/editarVehiculo.php">Editar vehiculos</a></li>
-									<li ><?php echo $_SESSION['usuario']?></li>
+									<li><a href="../SitioWeb/borrarVehiculo.php">Borrar vehiculo</a></li>
+									<li><?php echo $_SESSION['usuario']?></li>
 								<?php
 								}else{?>
 								<li><a href="#">Contacto <i class="fa fa-envelope"></i></a></li>

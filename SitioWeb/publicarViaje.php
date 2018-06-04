@@ -10,11 +10,11 @@
 		$tipo=$_POST['tipo'];
 		$destino=$_POST['destino'];
 		$fecha=$_POST['fecha'];
-	//	$dominio=$_POST['dominio'];
+		$patente=$_POST['dominio'];
 		
 	//	echo "$usuario" . "$password" . "$password2";
 		$errores='';
-		if(empty($origen)or empty($hora) or empty($tipo) or empty($destino) or empty($fecha)){
+		if(empty($origen)or empty($hora) or empty($tipo) or empty($destino) or empty($fecha)or empty($patente)){
 			$errores.='<li>Por favor rellena todos los campos correctamente </li>';
 		}else{
 			try{
@@ -30,7 +30,7 @@
 			}
 		}
 		if($errores==''){
-			$statement=$conexion->prepare('INSERT INTO viajes(id,origen,destino,fecha,tipo,hora,idusuario2) VALUES (null,:origen,:destino,:fecha,:tipo,:hora,:id)');
+			$statement=$conexion->prepare('INSERT INTO viajes(id,origen,destino,fecha,tipo,hora,idusuario2,idauto2) VALUES (null,:origen,:destino,:fecha,:tipo,:hora,:id,:idauto)');
 			$statement->execute(array(
 				':origen'=>$origen,
 				':destino'=>$destino,
@@ -38,6 +38,7 @@
 				':tipo'=>$tipo,
 				':hora'=>$hora,
 				':id'=>$user,
+				':idauto'=>$patente,
 				));
 			header('Location: index.php');
 		}

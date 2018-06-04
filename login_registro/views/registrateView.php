@@ -43,7 +43,7 @@
 				<?php if(!empty($errores)):?>
 					<div class="error">
 						<ul>
-							<?php  echo $errores;?>
+							<?php  echo $errores;sleep(5);header("Location: ../SitioWeb/index.php");?>
 						</ul>
 					</div>
 				<?php endif;?>

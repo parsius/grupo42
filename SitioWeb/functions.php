@@ -91,4 +91,5 @@
     function id_usuario($id){
 		return (string)$id;
 	}
+	
 ?>
