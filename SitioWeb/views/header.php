@@ -31,7 +31,7 @@
 									?>
 									<li><a href="#">Contacto <i class="fa fa-envelope"></i></a></li>
 									<li><a href="../SitioWeb/admin/cerrar.php">Cerrrar session</a></li>
-									<li><a href="#">Ver perfil</a></li>
+									<li><a href="../SitioWeb/views/perfil.php">Ver perfil</a></li>
 									<li><a href="../login_registro/crearVehiculo.php">Crear vehiculo</a></li>
 									<li><a href="../SitioWeb/publicarViaje.php">Publicar viaje</a></li>
 									<li><a href="#">Listar vehiculos</a></li>
