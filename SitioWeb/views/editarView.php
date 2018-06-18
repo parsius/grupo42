@@ -2,16 +2,15 @@
 	<div class="contenedor">
 		<div class="post">
 				<article>
-					<h2 class="titulo">Editar viaje</h2>
+					<h2 class="titulo">Capcidad</h2>
 					<form class="formulario" method="post" enctype="multipart/form-data" 
 						action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-						<input type="hidden" value="<?php echo $post['id']; ?>" name="id">
-						<input type="text" name="titulo" value="<?php echo $post['titulo']; ?>">
-						<input type="text" name="extracto" value="<?php echo $post['extracto']; ?>">
-						<textarea name="texto" ><?php echo $post['texto'];?></textarea>
-						<input type="file" name="thumb">
-						<input type="hidden" name="thumb-guardada" value="<?php echo $post['thumb']; ?>">
-
+						<input type="text" name="capacidad" value="<?php echo $post['capacidad']; ?>">
+						<h2 class="titulo">Tipo</h2>
+						<input type="text" name="tipo" value="<?php echo $post['tipo']; ?>">
+						<h2 class="titulo">Modelo</h2>
+						<input type="text" name="modelo" value="<?php echo $post['modelo']; ?>">
+						<input type="hidden" name="dominio" value="<?php echo $post['dominio']; ?>">
 						<input type="submit" value="Modificar viaje">
 					</form>	
 				</article>
