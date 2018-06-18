@@ -26,12 +26,26 @@
 		return $sentencia->fetchAll();
 	}
 
+	function obtener_post_de_vehiculos($post_por_pagina,$conexion,$id){
+		$inicio= (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina: 0;
+		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM vehiculos WHERE idusuario3 = '$id' LIMIT $inicio, $post_por_pagina");
+		//$sentencia->execute(array('nombre' => $id));
+		$sentencia->execute();
+		return $sentencia->fetchAll();
+	}
+
 	function id_viaje($id){
 		return (int)limpiarDatos($id);
 	}
 
 	function obtener_post_por_id($conexion, $id){
 		$resultado = $conexion->query("SELECT * FROM viajes WHERE id = $id ");
+		$resultado = $resultado->fetchAll();
+		return($resultado) ? $resultado : false;
+	}
+
+	function listar_vehiculos_por_id($conexion, $id){
+		$resultado = $conexion->query("SELECT * FROM vehiculos WHERE dominio = '$id' ");
 		$resultado = $resultado->fetchAll();
 		return($resultado) ? $resultado : false;
 	}
@@ -59,11 +73,11 @@
 		return $fecha;
 	}
 
-	function comprobarSession(){
-		if(!isset($_SESSION['admin'])){
-			header('Location:' . RUTA);
-		}
-	}
+//	function comprobarSession(){
+//		if(!isset($_SESSION['admin'])){
+	//		header('Location:' . RUTA);
+	//	}
+//	}
 
 	function getAge ($fecha)
     {

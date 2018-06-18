@@ -15,6 +15,9 @@
 	//	echo "$usuario" . "$password" . "$password2";
 		$errores='';
 		if(empty($origen)or empty($hora) or empty($tipo) or empty($destino) or empty($fecha)or empty($patente)){
+			if(empty($patente)){
+				$errores.='<li>Actualmente no tienes vehiculos para realizar el viaje</li>';
+			}
 			$errores.='<li>Por favor rellena todos los campos correctamente </li>';
 		}else{
 			try{

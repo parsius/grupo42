@@ -31,8 +31,6 @@
 			if($resultado != false){
 				$errores .= '<li>El nombre de usuario ya existe</li>';
 			}
-		//	$password =hash('sha512',$password);
-		//	$password2 =hash('sha512',$password2);
 			
 			if($password != $password2){
 				$errores .='<li>Las contraseñas no coinciden</li>';

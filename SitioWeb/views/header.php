@@ -26,6 +26,7 @@
 					<nav class="menu">
 						<ul>
 							<?php
+								
 								session_start(); 
 								if (isset($_SESSION['usuario'])) {
 									?>
@@ -34,9 +35,8 @@
 									<li><a href="#">Ver perfil</a></li>
 									<li><a href="../login_registro/crearVehiculo.php">Crear vehiculo</a></li>
 									<li><a href="../SitioWeb/publicarViaje.php">Publicar viaje</a></li>
-									<li><a href="#">Listar vehiculos</a></li>
-									<li><a href="../SitioWeb/admin/editarVehiculo.php">Editar vehiculos</a></li>
 									<li><a href="../SitioWeb/borrarVehiculo.php">Borrar vehiculo</a></li>
+									<li><a href="../SitioWeb/admin/index.php">Listar vehiculos</a></li>
 									<li><?php echo $_SESSION['usuario']?></li>
 								<?php
 								}else{?>

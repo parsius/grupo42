@@ -7,7 +7,7 @@
 <div class="contenedor">
 	<div>
 		<article>
-			<h2 class="titulo">Error</h2>
+			<h2 class="titulo">No tienes Vehiculos disponibles</h2>
 			<br>
 		</article>
 	</div>
