@@ -1,5 +1,4 @@
-
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
@@ -48,24 +47,24 @@
 			<?php foreach ($posts as $post): ?>
 				<div class="post">
 				<article>
-					<h2>Usuario:</h2>
-					<h2 class="titulo"><?php echo $post['idusuario3']; ?></h2>
-					<h2>Dominio:</h2>
-					<h2 class="titulo"><?php echo $post['dominio']; ?></h2>
+					<h2>Origen:</h2>
+					<h2 class="titulo"><?php echo $post['origen']; ?></h2>
+					<h2>Destino:</h2>
+					<h2 class="titulo"><?php echo $post['destino']; ?></h2>
+					<h2>Fecha:</h2>
+					<h2 class="titulo"><?php echo $post['fecha']; ?></h2>
 					<h2>Tipo:</h2>
 					<h2 class="titulo"><?php echo $post['tipo']; ?></h2>
-					<h2>Capacidad:</h2>
-					<h2 class="titulo"><?php echo $post['capacidad']; ?></h2>
-					<h2>Modelo:</h2>
-					<h2 class="titulo"><?php echo $post['modelo']; ?></h2>
-					<a href="editar.php?id=<?php echo $post['dominio']; ?>">Editar</a>
+					<h2>Horario de salida:</h2>
+					<h2 class="titulo"><?php echo $post['hora']; ?></h2>
+					<a href="elegirPostulantes.php?id=<?php echo $post['id']; ?>">Elegir Postulantes</a>
+					<a href="editarViaje.php?id=<?php echo $post['id']; ?>">Editar</a>
 			<!--		<a href="borrarVehiculo.php?id=<?php echo $post['dominio']; ?>">Borrar</a> !-->
 				</article>
 				</div>
 
 			<?php endforeach; ?>
 			
-			<?php require '../paginacion.php'?>
+			<?php require 'paginacionParaMisViajes.php'?>
 		</div>
-<?php require '../views/footer.php';?>
-
+<?php require 'footer.php';?>

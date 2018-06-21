@@ -1,5 +1,4 @@
-
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
@@ -48,24 +47,16 @@
 			<?php foreach ($posts as $post): ?>
 				<div class="post">
 				<article>
-					<h2>Usuario:</h2>
-					<h2 class="titulo"><?php echo $post['idusuario3']; ?></h2>
-					<h2>Dominio:</h2>
-					<h2 class="titulo"><?php echo $post['dominio']; ?></h2>
-					<h2>Tipo:</h2>
-					<h2 class="titulo"><?php echo $post['tipo']; ?></h2>
-					<h2>Capacidad:</h2>
-					<h2 class="titulo"><?php echo $post['capacidad']; ?></h2>
-					<h2>Modelo:</h2>
-					<h2 class="titulo"><?php echo $post['modelo']; ?></h2>
-					<a href="editar.php?id=<?php echo $post['dominio']; ?>">Editar</a>
+					<h2>Usuario postulado al viaje:</h2>
+					<h2 class="titulo"><?php echo $post['idpostulante']; ?></h2>
+					<a href="aceptarPostulante.php?id=<?php echo $post['idviaje'];?>">Aceptar</a>
+					<a href="#">Rechazar</a>
 			<!--		<a href="borrarVehiculo.php?id=<?php echo $post['dominio']; ?>">Borrar</a> !-->
 				</article>
 				</div>
 
 			<?php endforeach; ?>
 			
-			<?php require '../paginacion.php'?>
+			<?php require 'paginacionParaPostulantes.php'?>
 		</div>
-<?php require '../views/footer.php';?>
-
+<?php require 'footer.php';?>

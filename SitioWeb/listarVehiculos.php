@@ -1,11 +1,11 @@
 <?php
 	require 'admin/config.php';
 	require 'functions.php';
-	session_start();
+//	session_start();
 	
 
 	$conexion = conexion();
-	$usuario=$_SESSION['usuario'];
+	$usuario=$_GET['usuario'];
 //	$usuario=$GLOBALS;
 //	if(!$conexion){
 //		header('Location: error.php');

@@ -22,6 +22,12 @@
 		}else{
 			try{
 				$conexion=new PDO('mysql:host=localhost;dbname=aventon','root','');
+				$conect = $conexion->prepare('SELECT * FROM vehiculos WHERE dominio = :dom');
+				$conect->execute(array('dom' => $patente));
+  		    	$result = $conect->fetchAll();
+	   		    foreach ($result as $r) {
+	    			$capacidad=$r['capacidad'];
+	    		}	
 				$sql = $conexion->prepare('SELECT * FROM usuario WHERE usuario = :nombre');
 	    		$sql->execute(array('nombre' => $usuario));
 	   		    $resultado = $sql->fetchAll(); 
@@ -33,7 +39,7 @@
 			}
 		}
 		if($errores==''){
-			$statement=$conexion->prepare('INSERT INTO viajes(id,origen,destino,fecha,tipo,hora,idusuario2,idauto2) VALUES (null,:origen,:destino,:fecha,:tipo,:hora,:id,:idauto)');
+			$statement=$conexion->prepare('INSERT INTO viajes(id,origen,destino,fecha,tipo,hora,idusuario2,idauto2,capacidad) VALUES (null,:origen,:destino,:fecha,:tipo,:hora,:id,:idauto,:capacidad)');
 			$statement->execute(array(
 				':origen'=>$origen,
 				':destino'=>$destino,
@@ -42,6 +48,7 @@
 				':hora'=>$hora,
 				':id'=>$user,
 				':idauto'=>$patente,
+				':capacidad'=>$capacidad,
 				));
 			header('Location: index.php');
 		}

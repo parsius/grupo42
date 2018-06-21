@@ -28,11 +28,29 @@
 
 	function obtener_post_de_vehiculos($post_por_pagina,$conexion,$id){
 		$inicio= (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina: 0;
-		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM vehiculos WHERE idusuario3 = '$id' LIMIT $inicio, $post_por_pagina");
+		$int=0;
+		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM vehiculos WHERE idusuario3 = '$id' AND valido = '$int' LIMIT $inicio, $post_por_pagina");
 		//$sentencia->execute(array('nombre' => $id));
 		$sentencia->execute();
 		return $sentencia->fetchAll();
 	}
+
+	function obtener_post_de_viajes($post_por_pagina,$conexion,$id){
+		$inicio= (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina: 0;
+		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM viajes WHERE idusuario2 = '$id' LIMIT $inicio, $post_por_pagina");
+		//$sentencia->execute(array('nombre' => $id));
+		$sentencia->execute();
+		return $sentencia->fetchAll();
+	}
+
+	function obtener_post_de_postulantes($post_por_pagina,$conexion,$id){
+		$inicio= (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina: 0;
+		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM postulantes WHERE idviaje = '$id' LIMIT $inicio, $post_por_pagina");
+		//$sentencia->execute(array('nombre' => $id));
+		$sentencia->execute();
+		return $sentencia->fetchAll();
+	}
+
 
 	function id_viaje($id){
 		return (int)limpiarDatos($id);

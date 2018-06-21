@@ -1,28 +1,32 @@
+
+<?php require 'header.php' ?>
+
 <?php 
- class perfil{
-     function recuperarDatos(){
-		$link = mysqli_connect("localhost", "root", "", "aventon");
-        // $con =  mysqli_connect('localhost', 'root','') or die ("no se pudo conectar");
-	    mysqli_select_db( $link, 'aventon') or die ("no se pudo conectar");
-  
+try{
+		$conexion=new PDO('mysql:host=localhost;dbname=aventon','root','');
+	}catch (PDOExeption $e){
+		echo "Error:" . $e->getMessage();
+    ?>
+<?php
+# CONECTAMOS CON LA BASE
 
-$id= 1;
-$query="SELECT usuario, email FROM usuarios WHERE id='$id' ";
-$resultado = mysqli_query($link, $query);
-         
-if($row = mysqli_fetch_array($resultado)) {
- 
- echo $row['usuario'] ;?>
-  <br>  
- 
- <?php echo $row['email'] ; 
-     
-
- 
-
- 
-
- }
+# EXTRAEMOS DATOS DE MYSQL
+$id = 1;
+if(!isset($id))
+{
+echo 'No se ha seleccionado ninguna ID'; 
+}else{
+# EXTRAEMOS DATOS
+$user=mysql_query("SELECT nusuario, email FROM usuarios WHERE id='$id' ");
+if($row=mysql_fetch_array($user) )
+{
+ ?>
+<li>Modelo:<?php echo $row['nusuario'];?> </li>
+<li>Marca: <?php echo $row['email'];?></li>;<?php
+}else{
+echo 'No existe el usuario que buscas';
 }
-}
+ 
+} 
+
 ?>

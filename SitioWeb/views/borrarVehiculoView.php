@@ -23,9 +23,11 @@
 							$sql = $conexion->prepare('SELECT * FROM vehiculos WHERE idusuario3 = :idusuario3');
 	    					$sql->execute(array('idusuario3' => $usuario));
 	   		    			$resultado = $sql->fetchAll(); 
-	    					foreach ($resultado as $row) {?>
+	    					foreach ($resultado as $row) {
+	    						$valido=$row['valido']; if($valido == 0){ 
+	    						?>
 	    						<option ><?php echo $patente=$row['dominio']; ?></option>
-	    					<?php }	?>
+	    					<?php } }?>
 	    					<i class="submit-btn fa fa-arrow-right" onclick="login.submit()"></i>
 						
 					</select>

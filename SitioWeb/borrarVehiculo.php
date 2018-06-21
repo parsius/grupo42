@@ -1,9 +1,11 @@
 <?php
 	session_start();
+	require 'functions.php';
 //	if(isset($_SESSION['usuario'])){
 //		header('Location: index.php');
 //	}
 	$usuario=$_SESSION['usuario'];
+	$int=id_viaje(1);
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$patente=$_POST['dominio'];
 		
@@ -19,9 +21,10 @@
 			}
 		}
 		if($errores==''){
-				$sql = $conexion->prepare('DELETE FROM vehiculos WHERE dominio = :nombre');
-	    		$sql->execute(array('nombre' => $patente));
-	   		    $resultado = $sql->fetchAll(); 
+				$sql = $conexion->prepare('UPDATE vehiculos SET valido = :valido WHERE dominio = :nombre');
+	    		$sql->execute(array('nombre' => $patente,
+	    			'valido' =>$int));
+	   		  //  $resultado = $sql->fetchAll(); 
 			header('Location: index.php');
 		}
 		
