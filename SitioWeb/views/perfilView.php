@@ -1,32 +1,39 @@
 
-<?php require 'header.php' ?>
+<?php   
+class perfil{
+    function recuperarDatos($id){
+        $con = mysqli_connect("localhost", "root", "", "aventon") or die ("no se pudo conectar");
+        mysqli_select_db($con, 'aventon');
+        $query = "SELECT * FROM usuario WHERE usuario = '$id'";
+        $resultado = mysqli_query($con, $query);
+      
+        ?>
 
-<?php 
-try{
-		$conexion=new PDO('mysql:host=localhost;dbname=aventon','root','');
-	}catch (PDOExeption $e){
-		echo "Error:" . $e->getMessage();
-    ?>
-<?php
-# CONECTAMOS CON LA BASE
-
-# EXTRAEMOS DATOS DE MYSQL
-$id = 1;
-if(!isset($id))
-{
-echo 'No se ha seleccionado ninguna ID'; 
-}else{
-# EXTRAEMOS DATOS
-$user=mysql_query("SELECT nusuario, email FROM usuarios WHERE id='$id' ");
-if($row=mysql_fetch_array($user) )
-{
- ?>
-<li>Modelo:<?php echo $row['nusuario'];?> </li>
-<li>Marca: <?php echo $row['email'];?></li>;<?php
-}else{
-echo 'No existe el usuario que buscas';
+        <table> 
+            <?php
+        while ($rs = mysqli_fetch_array($resultado)){
+            echo "<tr>" 
+           ."<tr>"."<td>"."USUARIO: ".$rs['usuario']."</td>"."</tr>" 
+           ."<tr>"."<td>"."NOMBRE: ".$rs['nombre']."</td>"."</tr>" 
+           ."<tr>"."<td>"."APELLIDO: ".$rs['apellido']."</td>"."</tr>" 
+           ."<tr>"."<td>"."CUMPLEAÑOS: ".$rs['fecha']."</td>"."</tr>" 
+           ."<tr>"."<td>"."EMAIL: ".$rs['email']."</td>"."</tr>" 
+           ."</tr>"; 
+            }
+        ?>
+    </table>
+    <?php    
+        
+        
+    }
+    function soloRecuperarDatos($id,&$rs){
+        $con = mysqli_connect("localhost", "root", "", "aventon") or die ("no se pudo conectar");
+        mysqli_select_db($con, 'aventon');
+        $query = "SELECT * FROM usuario WHERE usuario = '$id'";
+        $resultado = mysqli_query($con, $query);
+        $rs = mysqli_fetch_array($resultado);
+    
+    }
+        
 }
- 
-} 
-
 ?>

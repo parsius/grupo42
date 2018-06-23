@@ -25,30 +25,44 @@
 
 					<nav class="menu">
 						<ul>
-							<?php
-								
-								session_start(); 
-								if (isset($_SESSION['usuario'])) {
-				
-                                    ?>
-									<li><a href="#">Contacto <i class="fa fa-envelope"></i></a></li>
+									<?php
+                                        $id= $_GET['ficha'];
+                                        include("perfilView.php");
+                                        $Con = new perfil();
+                                        $Con->soloRecuperarDatos($id,$rs);
+                    ?>
+                                    <li><a href="#">Contacto <i class="fa fa-envelope"></i></a></li>
 									<li><a href="../SitioWeb/admin/cerrar.php">Cerrrar session</a></li>
-									<li><a href="../SitioWeb/views/perfil.php?ficha=<?php echo $_SESSION['usuario']?>">Ver perfil</a></li>
+									<li><a href="#">Ver perfil</a></li>
 									<li><a href="../login_registro/crearVehiculo.php">Crear vehiculo</a></li>
 									<li><a href="../SitioWeb/publicarViaje.php">Publicar viaje</a></li>
 									<li><a href="../SitioWeb/borrarVehiculo.php">Borrar vehiculo</a></li>
 									<li><a href="../SitioWeb/admin/index.php">Listar vehiculos</a></li>
 									<li><a href="../SitioWeb/listarMisViajes.php">Listar mis viajes</a></li>
-									<li><?php echo $_SESSION['usuario']?></li>
-								<?php
-								}else{?>
-								<li><a href="#">Contacto <i class="fa fa-envelope"></i></a></li>
-								<li><a href="../login_registro/login.php">Iniciar Sesion</a></li>
-								<li><a href="../login_registro/registrate.php">Registrarse</a></li>
-							<?php } ?>
+									<li><?php echo $rs['usuario']; ?></li>
+								
+								
 						</ul>
 					</nav>
 				</div>
 			</div>
 		</header>
-		                     
+	<div class="contenedor">
+		<div class="post">
+				<article>
+					
+                    <h2 class="titulo">NOMBRE</h2>
+					<form class="formulario" method="post" enctype="multipart/form-data" 
+						action="editarPerfil.php">
+						<input type="text" name="capacidad" value="<?php echo $rs['nombre']; ?>">
+						<h2 class="titulo">APELLIDO</h2>
+						<input type="text" name="tipo" value="<?php echo $rs['apellido']; ?>">
+						<h2 class="titulo">EMAIL</h2>
+						<input type="text" name="modelo" value="<?php echo $rs['email']; ?>">
+						<input type="hidden" name="dominio" value="<?php echo $rs['usuario']; ?>">
+						<input type="submit" value="Modificar Perfil">
+					</form>	
+				</article>
+		</div>
+	</div>	
+<?php require 'footer.php'; ?>
