@@ -34,6 +34,13 @@ class perfil{
         $rs = mysqli_fetch_array($resultado);
     
     }
+     function soloRecuperarMensajes($id,&$rs){
+        $con = mysqli_connect("localhost", "root", "", "aventon") or die ("no se pudo conectar");
+        mysqli_select_db($con, 'aventon');
+        $query = "SELECT * FROM mensajes WHERE idusuario = '$id'";
+        $resultado = mysqli_query($con, $query);
+        $rs = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
         
+    }   
 }
 ?>

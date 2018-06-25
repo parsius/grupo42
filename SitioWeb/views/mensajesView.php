@@ -12,7 +12,13 @@
 	</head>
 	<body>
 		<header>
-			<div class="contenedor">
+			 <?php $id= $_GET['ficha'];
+            include("perfilView.php");
+            $Con = new perfil();
+            $Con->soloRecuperarMensajes($id,$rs);
+              
+            ?>
+            <div class="contenedor">
 				<div class="logo izquierda">
 					<p><a href="<?php echo RUTA ;?>">Aventon</a></p>
 				</div>
@@ -33,7 +39,7 @@
 									<li><a href="../SitioWeb/borrarVehiculo.php">Borrar vehiculo</a></li>
 									<li><a href="../SitioWeb/admin/index.php">Listar vehiculos</a></li>
 									<li><a href="../SitioWeb/listarMisViajes.php">Listar mis viajes</a></li>
-									<li><?php echo $_SESSION['usuario']?></li>
+									<li><?php echo $id ?></li>
 								
 								
 						</ul>
@@ -44,27 +50,28 @@
 		<div class="contenedor">
 			<h2>
 			</h2>	
-			<?php foreach ($posts as $post): ?>
+			<?php if (empty($rs)){?>
+            <div class="post">
+				<article>
+					<h2>Mensaje:</h2>
+					<h2 class="titulo">"No hay mensajes por ver"</h2>
+					
+				</article>
+				</div>
+            
+           <?php }else{
+             while ($rs){  ?>
 				<div class="post">
 				<article>
-					<h2>Origen:</h2>
-					<h2 class="titulo"><?php echo $post['origen']; ?></h2>
-					<h2>Destino:</h2>
-					<h2 class="titulo"><?php echo $post['destino']; ?></h2>
-					<h2>Fecha:</h2>
-					<h2 class="titulo"><?php echo $post['fecha']; ?></h2>
-					<h2>Tipo:</h2>
-					<h2 class="titulo"><?php echo $post['tipo']; ?></h2>
-					<h2>Horario de salida:</h2>
-					<h2 class="titulo"><?php echo $post['hora']; ?></h2>
-					<a href="elegirPostulantes.php?id=<?php echo $post['id']; ?>">Elegir Postulantes</a>
-					<a href="editarViaje.php?id=<?php echo $post['id']; ?>">Editar</a>
-			<!--		<a href="borrarVehiculo.php?id=<?php echo $post['dominio']; ?>">Borrar</a> !-->
+					<h2>Mensaje:</h2>
+					<h2 class="titulo"><?php echo $rs['mensaje']; ?></h2>
+					
 				</article>
 				</div>
 
-			<?php endforeach; ?>
-			
-			<?php require 'paginacionParaMisViajes.php'?>
+			<?php }
+}
+			 require 'paginacionParaMensajes.php'?>
+            
 		</div>
 <?php require 'footer.php';?>
