@@ -15,9 +15,9 @@
 		return $datos;
 	}
 
-	function obtener_post_de_mensajes($conexion,$id){
-		
-		$sentencia=$conexion->prepare("SELECT * FROM mensajes WHERE idusuario = '$id' ");
+	function obtener_post_de_mensajes($post_por_pagina,$conexion,$id){
+		$inicio= (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina: 0;
+		$sentencia=$conexion->prepare("SELECT * FROM mensajes WHERE idusuario = '$id' LIMIT $inicio, $post_por_pagina ");
 		//$sentencia->execute(array('nombre' => $id));
 		$sentencia->execute();
 		

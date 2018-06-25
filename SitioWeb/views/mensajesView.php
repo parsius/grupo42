@@ -13,10 +13,7 @@
 	<body>
 		<header>
 			 <?php $id= $_GET['ficha'];
-            include("perfilView.php");
-            $Con = new perfil();
-            $Con->soloRecuperarMensajes($id,$rs);
-              
+            
             ?>
             <div class="contenedor">
 				<div class="logo izquierda">
