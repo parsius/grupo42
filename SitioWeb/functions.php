@@ -15,7 +15,18 @@
 		return $datos;
 	}
 
-	function pagina_actual(){
+	function obtener_post_de_mensajes($conexion,$id){
+		
+		$sentencia=$conexion->prepare("SELECT * FROM mensajes WHERE idusuario = '$id' ");
+		//$sentencia->execute(array('nombre' => $id));
+		$sentencia->execute();
+		
+        return $sentencia->fetchAll();
+        
+	}
+
+
+    function pagina_actual(){
 		return isset($_GET['p']) ? (int)$_GET['p'] : 1;
 	}
 

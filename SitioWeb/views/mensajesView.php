@@ -50,7 +50,7 @@
 		<div class="contenedor">
 			<h2>
 			</h2>	
-			<?php if (empty($rs)){?>
+			<?php if (empty($mensajes)){?>
             <div class="post">
 				<article>
 					<h2>Mensaje:</h2>
@@ -59,17 +59,17 @@
 				</article>
 				</div>
             
-           <?php }else{
-             while ($rs){  ?>
+           <?php }else{  
+             foreach ($mensajes as $mensaje): ?>
 				<div class="post">
 				<article>
-					<h2>Mensaje:</h2>
-					<h2 class="titulo"><?php echo $rs['mensaje']; ?></h2>
+					<h2>MENSAJE:</h2>
+					<h2 class="titulo"><?php echo $mensaje['mensaje']; ?></h2>
 					
 				</article>
 				</div>
 
-			<?php }
+			<?php endforeach;
 }
 			 require 'paginacionParaMensajes.php'?>
             
