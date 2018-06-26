@@ -7,13 +7,13 @@
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo RUTA ?>/css/estilos.css">
+		<link rel="stylesheet" href="http://localhost/CursoPHP/Practicas/SitioWeb/css/estilos.css">
 		<title>Aventon</title>
 	</head>
 	<body>
 		<header>
 			 <?php $id= $_GET['ficha'];
-            
+              
             ?>
             <div class="contenedor">
 				<div class="logo izquierda">
@@ -35,7 +35,7 @@
 									<li><a href="../SitioWeb/publicarViaje.php">Publicar viaje</a></li>
 									<li><a href="../SitioWeb/borrarVehiculo.php">Borrar vehiculo</a></li>
 									<li><a href="../SitioWeb/admin/index.php">Listar vehiculos</a></li>
-									<li><a href="../SitioWeb/listarMisViajes.php">Listar mis viajes</a></li>
+									<li><a href="../SitioWeb/listarMisViajes.php">Mensajes</a></li>
 									<li><?php echo $id ?></li>
 								
 								

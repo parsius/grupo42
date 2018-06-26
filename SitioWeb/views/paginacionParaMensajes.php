@@ -1,9 +1,8 @@
-<?php include("../admin/config.php");
-      include("../functions.php");
+<?php 
       $con = mysqli_connect("localhost", "root", "", "aventon") or die ("no se pudo conectar");
 ?>
 
-<?php $numero_paginas = numero_paginas($blog_config['post_por_pagina'], $con); ?>
+<?php $numero_paginas = numero_paginas(10, $con); ?>
 <section class="paginacion">
 	<ul>
 		<?php if (pagina_actual() === 1): ?>

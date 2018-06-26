@@ -35,30 +35,44 @@
 									<li><a href="../SitioWeb/listarMisViajes.php">Listar mis viajes</a></li>
 									<li><?php echo $_SESSION['usuario']?></li>
 								
+								
 						</ul>
 					</nav>
 				</div>
 			</div>
 		</header>
-	<div class="contenedor">
-		<div class="post">
+		<div class="contenedor">
+			<h2>
+			</h2>	
+			<?php foreach ($posts as $post): ?>
+				<div class="post">
 				<article>
-					<h2 class="titulo">Origen</h2>
-					<form class="formulario" method="post" enctype="multipart/form-data" 
-						action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
-						<input type="text" name="origen" value="<?php echo $post['origen']; ?>">
-						<h2 class="titulo">Destino</h2>
-						<input type="text" name="destino" disabled value="<?php echo $post['destino']; ?>">
-						<h2 class="titulo">Fecha</h2>
-						<input type="date" name="fecha" disabled value="<?php echo $post['fecha']; ?>">
-						<h2 class="titulo">Tipo</h2>
-						<input type="text" name="tipo" value="<?php echo $post['tipo']; ?>">
-						<h2 class="titulo">Hora</h2>
-						<input type="text" name="hora" value="<?php echo $post['hora']; ?>">
-						<input type="hidden" name="id" value="<?php echo $post['id']; ?>">
-						<input type="submit" value="Modificar viaje">
-					</form>	
+					<?php 
+					  $idpost=$post['idviaje'];
+                      $sentencia=$conexion->prepare("SELECT * FROM viajes WHERE id = '$idpost' ");
+					  $sentencia->execute();
+					  $result= $sentencia->fetchAll();
+					  foreach($result as $row){
+                     	 $destino= $row['destino']; 
+                  	  }
+
+					if($post['aceptado']==0){?>
+					<h2>Viaje con destino a:</h2>
+					<h2 class="titulo"><?php echo $destino; ?></h2>
+					<h2>Aceptado</h2>
+					<?php }else{?>
+					<h2>Viaje con destino a:</h2>
+					<h2 class="titulo"><?php echo $destino; ?></h2>
+					<h2>Pendiente</h2>
+					<?php } ?>
+					<a href="eliminarmeComoCopiloto.php?id=<?php echo $post['idviaje'];?>&idpost=<?php echo $post['idpostulante'];?>">Eliminarme como copiloto de este viaje</a>
+
+			<!--		<a href="borrarVehiculo.php?id=<?php echo $post['dominio']; ?>">Borrar</a> !-->
 				</article>
+				</div>
+
+			<?php endforeach; ?>
+			
+			<?php require 'paginacionParaMisViajes.php'?>
 		</div>
-	</div>	
-<?php require 'footer.php'; ?>
+<?php require 'footer.php';?>

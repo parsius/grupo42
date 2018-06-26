@@ -60,9 +60,7 @@
 						<h2 class="titulo">EMAIL</h2>
 						<input type="text" name="modelo" value="<?php echo $rs['email']; ?>">
 						<input type="hidden" name="dominio" value="<?php echo $rs['usuario']; ?>">
-                        <h2 class="titulo">NOMBRE DE USUARIO</h2>
-						<input type="text" name="usuario" value="<?php echo $rs['usuario']; ?>">
-						<input type="submit" value="Modificar Perfil">
+             			<input type="submit" value="Modificar Perfil">
 					</form>	
 				</article>
 		</div>

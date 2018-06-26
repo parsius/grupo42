@@ -8,8 +8,8 @@
 		header('Location: error.php');
 	}
 	
-	$mensajes = obtener_post_de_mensajes($conexion,$usuario);
+	$posts = obtener_post_de_postulantes_poa($blog_config['post_por_pagina'],$conexion,$usuario);
 
 
-	require 'views/mensajesView.php';
+	require 'views/verViajesPendientesView.php';
 ?>

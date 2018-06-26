@@ -49,7 +49,7 @@
 				<article>
 					<h2>Usuario postulado al viaje:</h2>
 					<h2 class="titulo"><?php echo $post['idpostulante']; ?></h2>
-					<a href="aceptarPostulante.php?id=<?php echo $post['idviaje'];?>">Aceptar</a>
+					<a href="aceptarPostulante.php?id=<?php echo $post['idviaje'];?>&idpost=<?php echo $post['idpostulante'];?>">Aceptar</a>
 					<a href="#">Rechazar</a>
 			<!--		<a href="borrarVehiculo.php?id=<?php echo $post['dominio']; ?>">Borrar</a> !-->
 				</article>

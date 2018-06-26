@@ -15,26 +15,25 @@
 		return $datos;
 	}
 
-	function obtener_post_de_mensajes($post_por_pagina,$conexion,$id){
-		$inicio= (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina: 0;
-		$sentencia=$conexion->prepare("SELECT * FROM mensajes WHERE idusuario = '$id' LIMIT $inicio, $post_por_pagina ");
-		//$sentencia->execute(array('nombre' => $id));
-		$sentencia->execute();
-		
-        return $sentencia->fetchAll();
-        
-	}
-
-
-    function pagina_actual(){
+	function pagina_actual(){
 		return isset($_GET['p']) ? (int)$_GET['p'] : 1;
 	}
 
 	function obtener_post($post_por_pagina,$conexion){
 		$inicio= (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina: 0;
-		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM viajes WHERE estado = '2' LIMIT $inicio, $post_por_pagina");
+		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM viajes LIMIT $inicio, $post_por_pagina");
 		$sentencia->execute();
 		return $sentencia->fetchAll();
+	}
+
+	function obtener_post_de_mensajes($conexion,$id){
+		
+		$sentencia=$conexion->prepare("SELECT * FROM mensajes WHERE idusuario = '$id' ");
+		//$sentencia->execute(array('nombre' => $id));
+		$sentencia->execute();
+		
+        return $sentencia->fetchAll();
+        
 	}
 
 	function obtener_post_de_vehiculos($post_por_pagina,$conexion,$id){
@@ -56,7 +55,15 @@
 
 	function obtener_post_de_postulantes($post_por_pagina,$conexion,$id){
 		$inicio= (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina: 0;
-		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM postulantes WHERE idviaje = '$id' LIMIT $inicio, $post_por_pagina");
+		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM postulantes WHERE idviaje = '$id' AND aceptado = '2' LIMIT $inicio, $post_por_pagina");
+		//$sentencia->execute(array('nombre' => $id));
+		$sentencia->execute();
+		return $sentencia->fetchAll();
+	}
+	// Ver viajes pendientes o aprobados
+	function obtener_post_de_postulantes_poa($post_por_pagina,$conexion,$id){
+		$inicio= (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina: 0;
+		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM postulantes WHERE idpostulante = '$id' AND aceptado = '2' OR aceptado='0' LIMIT $inicio, $post_por_pagina");
 		//$sentencia->execute(array('nombre' => $id));
 		$sentencia->execute();
 		return $sentencia->fetchAll();
@@ -68,7 +75,7 @@
 	}
 
 	function obtener_post_por_id($conexion, $id){
-		$resultado = $conexion->query("SELECT * FROM viajes WHERE id = $id AND estado = '2' ");
+		$resultado = $conexion->query("SELECT * FROM viajes WHERE id = $id ");
 		$resultado = $resultado->fetchAll();
 		return($resultado) ? $resultado : false;
 	}

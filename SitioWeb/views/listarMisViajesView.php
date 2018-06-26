@@ -59,7 +59,7 @@
 					<h2 class="titulo"><?php echo $post['hora']; ?></h2>
 					<a href="elegirPostulantes.php?id=<?php echo $post['id']; ?>">Elegir Postulantes</a>
 					<a href="editarViaje.php?id=<?php echo $post['id']; ?>">Editar</a>
-					<a href="cancelarViaje.php?id=<?php echo $post['id']; ?>&usua=<?php echo $_SESSION['usuario']?>">Cancelar viaje</a>
+					<a href="cancelarViaje.php?id=<?php echo $post['id']; ?>">Cancelar viaje</a>
 			<!--		<a href="borrarVehiculo.php?id=<?php echo $post['dominio']; ?>">Borrar</a> !-->
 				</article>
 				</div>
