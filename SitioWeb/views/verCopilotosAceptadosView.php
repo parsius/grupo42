@@ -35,7 +35,6 @@
 									<li><a href="../SitioWeb/listarMisViajes.php">Listar mis viajes</a></li>
 									<li><a href="../SitioWeb/verViajesPendientes.php">Viajes pendientes/aprobados</a></li>
 									<li><a href="../SitioWeb/misMensajes.php?ficha=<?php echo $_SESSION['usuario'];?>">Mensajes</a></li>
-
 									<li><?php echo $_SESSION['usuario']?></li>
 								
 								
@@ -50,47 +49,14 @@
 			<?php foreach ($posts as $post): ?>
 				<div class="post">
 				<article>
-					<?php 
-					  $idpost=$post['idviaje'];
-                      $sentencia=$conexion->prepare("SELECT * FROM viajes WHERE id = '$idpost' ");
-					  $sentencia->execute();
-					  $result= $sentencia->fetchAll();
-					  foreach($result as $row){
-                     	 $destino= $row['destino'];
-                     	 $hora=$row['hora'];
-                     	 $fecha=$row['fecha'];
-                     	 $user=$row['idusuario2']; 
-                  	  }
-
-					if($post['aceptado']==0){?>
-					<h2>Viaje con destino a:</h2>
-					<h2 class="titulo"><?php echo $destino; ?></h2>
-					<h2>Hora del viaje:</h2>
-					<h2 class="titulo"><?php echo $hora; ?></h2>
-					<h2>Fecha de salida:</h2>
-					<h2 class="titulo"><?php echo $fecha; ?></h2>
-					<h2>Del usuario:</h2>
-					<h2 class="titulo"><?php echo $user; ?></h2>
-					<h2>Aceptado</h2>
-					<?php }else{?>
-					<h2>Viaje con destino a:</h2>
-					<h2 class="titulo"><?php echo $destino; ?></h2>
-					<h2>Hora del viaje:</h2>
-					<h2 class="titulo"><?php echo $hora; ?></h2>
-					<h2>Fecha de salida:</h2>
-					<h2 class="titulo"><?php echo $fecha; ?></h2>
-					<h2>Del usuario:</h2>
-					<h2 class="titulo"><?php echo $user; ?></h2>
-					<h2>Pendiente</h2>
-					<?php } ?>
-					<a href="eliminarmeComoCopiloto.php?id=<?php echo $post['idviaje'];?>&idpost=<?php echo $post['idpostulante'];?>">Eliminarme como copiloto de este viaje</a>
-
-			<!--		<a href="borrarVehiculo.php?id=<?php echo $post['dominio']; ?>">Borrar</a> !-->
+					<h2>Usuario aceptado en el viaje:</h2>
+					<h2 class="titulo"><?php echo $post['idpostulante']; ?></h2>
+					<a href="eliminarCopilotoSeleccionado.php?id=<?php echo $post['idviaje'];?>&idpost=<?php echo $post['idpostulante'];?>">Eliminar copiloto</a>
 				</article>
 				</div>
 
 			<?php endforeach; ?>
 			
-			<?php require 'paginacionParaMisViajes.php'?>
+			<?php require 'paginacionParaPostulantes.php'?>
 		</div>
 <?php require 'footer.php';?>

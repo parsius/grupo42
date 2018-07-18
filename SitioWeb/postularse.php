@@ -37,7 +37,7 @@
 									':idpiloto'=>$idpiloto));
 				header('Location: index.php');
 			}else{
-				$errores .= '<li>No se puede postular a este viaje porque ya esta postulado o es su propio viaje</li>';
+				header('Location: errorParaPostularse.php');
 			}
 
 		}catch(PDOExeption $e){

@@ -20,8 +20,20 @@
 	}
 
 	function obtener_post($post_por_pagina,$conexion){
+		$fecha_act =date('Y-m-d',time());
 		$inicio= (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina: 0;
-		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM viajes LIMIT $inicio, $post_por_pagina");
+		$statement=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM viajes WHERE estado = '2' ");
+		$statement->execute();
+		$result= $statement->fetchAll();
+		foreach($result as $row){
+			$fechaLlegadaViaje=$row['fechallegada'];
+			$id=$row['id'];
+			if($fechaLlegadaViaje <= $fecha_act){
+				$statement2=$conexion->prepare("UPDATE viajes SET estado = '0' WHERE id = '$id' ");
+				$statement2->execute();
+			}
+		}
+		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM viajes WHERE estado = '2' AND fechallegada > '$fecha_act' ORDER BY id DESC LIMIT $inicio, $post_por_pagina ");
 		$sentencia->execute();
 		return $sentencia->fetchAll();
 	}
@@ -64,6 +76,14 @@
 	function obtener_post_de_postulantes_poa($post_por_pagina,$conexion,$id){
 		$inicio= (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina: 0;
 		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM postulantes WHERE idpostulante = '$id' AND aceptado = '2' OR aceptado='0' LIMIT $inicio, $post_por_pagina");
+		//$sentencia->execute(array('nombre' => $id));
+		$sentencia->execute();
+		return $sentencia->fetchAll();
+	}
+
+	function obtener_post_de_postulantes_aceptados($post_por_pagina,$conexion,$id){
+		$inicio= (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina: 0;
+		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM postulantes WHERE idviaje = '$id' AND aceptado = '0' LIMIT $inicio, $post_por_pagina");
 		//$sentencia->execute(array('nombre' => $id));
 		$sentencia->execute();
 		return $sentencia->fetchAll();

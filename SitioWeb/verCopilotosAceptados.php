@@ -4,16 +4,17 @@
 	require 'functions.php';
 	$conexion=conexion();
 	$usuario=$_SESSION['usuario'];
+	$id=$_GET['id'];
 	if(!$conexion){
 		header('Location: error.php');
 	}
 	
-	$posts = obtener_post_de_postulantes_poa($blog_config['post_por_pagina'],$conexion,$usuario);
+	$posts = obtener_post_de_postulantes_aceptados($blog_config['post_por_pagina'],$conexion,$id);
 
 	if(!$posts){
 		header('Location: errorParaViajesPendientes.php');
 	}
 
 
-	require 'views/verViajesPendientesView.php';
+	require 'views/verCopilotosAceptadosView.php';
 ?>

@@ -11,6 +11,7 @@
 		$destino=$_POST['destino'];
 		$fecha=$_POST['fecha'];
 		$patente=$_POST['dominio'];
+		$vehiculoUsado=1;
 		
 	//	echo "$usuario" . "$password" . "$password2";
 		$errores='';
@@ -50,6 +51,10 @@
 				':idauto'=>$patente,
 				':capacidad'=>$capacidad,
 				));
+	    		$statement2 = $conexion->prepare('UPDATE vehiculos SET enuso = :enuso WHERE dominio = :dom ');
+	    		$statement2->execute(array(':dom'=>$patente,
+	    			':enuso'=>$vehiculoUsado));	
+
 			header('Location: index.php');
 		}
 		

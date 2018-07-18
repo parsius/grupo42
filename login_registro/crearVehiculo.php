@@ -8,7 +8,7 @@
 		$capacidad=$_POST['capacidad'];
 		$modelo=$_POST['modelo'];
 		$errores='';
-		if(empty($dominio)or empty($tipo) or empty($capacidad) or empty($modelo)){
+		if(empty($dominio)or empty($tipo) or empty($capacidad) or empty($modelo) or ($capacidad == 0)){
 			$errores.='<li>Por favor rellena todos los campos correctamente </li>';
 		}else{
 			try{
@@ -34,9 +34,7 @@
 				':tipo'=>$tipo,
 				':capacidad'=>$capacidad,
 				':modelo'=>$modelo,
-				':id'=>$user,
-
-				));
+				':id'=>$user));
 			header('Location: ../SitioWeb/index.php');
 		}
 		

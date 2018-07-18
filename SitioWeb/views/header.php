@@ -30,12 +30,11 @@
 								session_start(); 
 								if (isset($_SESSION['usuario'])) {
 									?>
-									<li><a href="#">Contacto <i class="fa fa-envelope"></i></a></li>
+									<li><a href="../SitioWeb/contacto.php">Contacto <i class="fa fa-envelope"></i></a></li>
 									<li><a href="../SitioWeb/admin/cerrar.php">Cerrar sesion</a></li>
 									<li><a href="../SitioWeb/views/perfil.php?ficha=<?php echo $_SESSION['usuario'];?>">Ver perfil</a></li>
 									<li><a href="../login_registro/crearVehiculo.php">Crear vehiculo</a></li>
 									<li><a href="../SitioWeb/publicarViaje.php">Publicar viaje</a></li>
-									<li><a href="../SitioWeb/borrarVehiculo.php">Borrar vehiculo</a></li>
 									<li><a href="../SitioWeb/admin/index.php">Listar vehiculos</a></li>
 									<li><a href="../SitioWeb/listarMisViajes.php">Listar mis viajes</a></li>
 									<li><a href="../SitioWeb/verViajesPendientes.php">Viajes pendientes/aprobados</a></li>

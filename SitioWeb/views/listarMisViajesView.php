@@ -30,9 +30,11 @@
 									<li><a href="#">Ver perfil</a></li>
 									<li><a href="../login_registro/crearVehiculo.php">Crear vehiculo</a></li>
 									<li><a href="../SitioWeb/publicarViaje.php">Publicar viaje</a></li>
-									<li><a href="../SitioWeb/borrarVehiculo.php">Borrar vehiculo</a></li>
 									<li><a href="../SitioWeb/admin/index.php">Listar vehiculos</a></li>
 									<li><a href="../SitioWeb/listarMisViajes.php">Listar mis viajes</a></li>
+									<li><a href="../SitioWeb/verViajesPendientes.php">Viajes pendientes/aprobados</a></li>
+									<li><a href="../SitioWeb/misMensajes.php?ficha=<?php echo $_SESSION['usuario'];?>">Mensajes</a></li>
+
 									<li><?php echo $_SESSION['usuario']?></li>
 								
 								
@@ -57,10 +59,13 @@
 					<h2 class="titulo"><?php echo $post['tipo']; ?></h2>
 					<h2>Horario de salida:</h2>
 					<h2 class="titulo"><?php echo $post['hora']; ?></h2>
+					<h2>Capacidad:</h2>
+					<h2 class="titulo"><?php echo $post['capacidad']; ?></h2>
 					<a href="elegirPostulantes.php?id=<?php echo $post['id']; ?>">Elegir Postulantes</a>
 					<a href="editarViaje.php?id=<?php echo $post['id']; ?>">Editar</a>
 					<a href="cancelarViaje.php?id=<?php echo $post['id']; ?>">Cancelar viaje</a>
-			<!--		<a href="borrarVehiculo.php?id=<?php echo $post['dominio']; ?>">Borrar</a> !-->
+					<a href="verCopilotosAceptados.php?id=<?php echo $post['id'];?>">Ver copilotos aceptados</a>
+			
 				</article>
 				</div>
 

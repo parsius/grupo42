@@ -33,6 +33,8 @@
 									<li><a href="../SitioWeb/borrarVehiculo.php">Borrar vehiculo</a></li>
 									<li><a href="../SitioWeb/admin/index.php">Listar vehiculos</a></li>
 									<li><a href="../SitioWeb/listarMisViajes.php">Listar mis viajes</a></li>
+									<li><a href="../SitioWeb/verViajesPendientes.php">Viajes pendientes/aprobados</a></li>
+									<li><a href="../SitioWeb/misMensajes.php?ficha=<?php echo $_SESSION['usuario'];?>">Mensajes</a></li>
 									<li><?php echo $_SESSION['usuario']?></li>
 								
 								
@@ -53,7 +55,7 @@
 						<h2 class="titulo">Modelo</h2>
 						<input type="text" name="modelo" value="<?php echo $post['modelo']; ?>">
 						<input type="hidden" name="dominio" value="<?php echo $post['dominio']; ?>">
-						<input type="submit" value="Modificar viaje">
+						<input type="submit" value="Modificar vehiculo">
 					</form>	
 				</article>
 		</div>

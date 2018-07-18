@@ -10,7 +10,7 @@
 	$posts = obtener_post($blog_config['post_por_pagina'],$conexion);
 	
 	if(!$posts){
-		header('Location: error.php');
+		header('Location: errorMostrarViajesIndex');
 	}
 	
 	

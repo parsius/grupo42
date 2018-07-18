@@ -29,12 +29,13 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<h2>Introdusca la patente del vehiculo a utilizar: </h2>
+					<h2>Elija la patente del vehiculo a utilizar: </h2>
 					<select name="dominio" >
-							<?php 
+							<?php
+							$usado=0; 
 							$usuario=$_SESSION['usuario'];
 							$conexion=new PDO('mysql:host=localhost;dbname=aventon','root','');
-							$sql = $conexion->prepare('SELECT * FROM vehiculos WHERE idusuario3 = :idusuario3');
+							$sql = $conexion->prepare("SELECT * FROM vehiculos WHERE idusuario3 = :idusuario3 AND enuso = '$usado'");
 	    					$sql->execute(array('idusuario3' => $usuario));
 	   		    			$resultado = $sql->fetchAll(); 
 	    					foreach ($resultado as $row) {

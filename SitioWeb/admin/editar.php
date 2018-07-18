@@ -11,6 +11,9 @@
 		$tipo = $_POST['tipo'];
 		$modelo = $_POST['modelo'];
 		$conexion=conexion();
+		if($capacidad==0){
+			header('Location:' . RUTA . '/errorEditarCapacidad.php');
+		}else{
 		$statemen = $conexion->prepare('UPDATE vehiculos SET capacidad = :capacidad, tipo = :tipo, 
 		modelo = :modelo WHERE dominio = :id');
 		$statemen->execute(array(
@@ -19,7 +22,7 @@
 			':modelo' => $modelo, 
 			':id' => $dominio));
 		header('Location: ' . RUTA . '/index.php');
-		
+		}
 	}else{
 		
 		$dominio = $_GET['id'];

@@ -33,6 +33,8 @@
 									<li><a href="../SitioWeb/borrarVehiculo.php">Borrar vehiculo</a></li>
 									<li><a href="../SitioWeb/admin/index.php">Listar vehiculos</a></li>
 									<li><a href="../SitioWeb/listarMisViajes.php">Listar mis viajes</a></li>
+									<li><a href="../SitioWeb/verViajesPendientes.php">Viajes pendientes/aprobados</a></li>
+									<li><a href="../SitioWeb/misMensajes.php?ficha=<?php echo $_SESSION['usuario'];?>">Mensajes</a></li>
 									<li><?php echo $_SESSION['usuario']?></li>
 								
 								
@@ -50,7 +52,7 @@
 					<h2>Usuario postulado al viaje:</h2>
 					<h2 class="titulo"><?php echo $post['idpostulante']; ?></h2>
 					<a href="aceptarPostulante.php?id=<?php echo $post['idviaje'];?>&idpost=<?php echo $post['idpostulante'];?>">Aceptar</a>
-					<a href="#">Rechazar</a>
+					<a href="rechazarPostulante.php?id=<?php echo $post['idviaje'];?>&idpost=<?php echo $post['idpostulante'];?>">Rechazar</a>
 			<!--		<a href="borrarVehiculo.php?id=<?php echo $post['dominio']; ?>">Borrar</a> !-->
 				</article>
 				</div>

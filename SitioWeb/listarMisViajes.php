@@ -10,6 +10,10 @@
 	
 	$posts = obtener_post_de_viajes($blog_config['post_por_pagina'],$conexion,$usuario);
 
+	if(!$posts){
+		header('Location: errorParaMisViajes.php');
+	}
+
 
 	require 'views/listarMisViajesView.php';
 ?>

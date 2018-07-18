@@ -31,9 +31,11 @@
 									<li><a href="#">Ver perfil</a></li>
 									<li><a href="../login_registro/crearVehiculo.php">Crear vehiculo</a></li>
 									<li><a href="../SitioWeb/publicarViaje.php">Publicar viaje</a></li>
-									<li><a href="../SitioWeb/borrarVehiculo.php">Borrar vehiculo</a></li>
 									<li><a href="../SitioWeb/admin/index.php">Listar vehiculos</a></li>
 									<li><a href="../SitioWeb/listarMisViajes.php">Listar mis viajes</a></li>
+									<li><a href="../SitioWeb/verViajesPendientes.php">Viajes pendientes/aprobados</a></li>
+									<li><a href="../SitioWeb/misMensajes.php?ficha=<?php echo $_SESSION['usuario'];?>">Mensajes</a></li>
+
 									<li><?php echo $_SESSION['usuario']?></li>
 								
 								
@@ -58,7 +60,14 @@
 					<h2 class="titulo"><?php echo $post['capacidad']; ?></h2>
 					<h2>Modelo:</h2>
 					<h2 class="titulo"><?php echo $post['modelo']; ?></h2>
+					<?php if($post['enuso'] == 1){ ?>
+					<h2 >Este vehiculo esta siendo utilizado en un viaje por lo tanto no se puede dar de baja</h2>
+					<?php } ?>
 					<a href="editar.php?id=<?php echo $post['dominio']; ?>">Editar</a>
+					<?php if($post['enuso'] == 0){ ?>
+					<a href="borrarVehiculo.php?dom=<?php echo $post['dominio']; ?>">Borrar vehiculo</a>
+					<?php } ?>
+					
 			<!--		<a href="borrarVehiculo.php?id=<?php echo $post['dominio']; ?>">Borrar</a> !-->
 				</article>
 				</div>
