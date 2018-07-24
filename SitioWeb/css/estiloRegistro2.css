@@ -60,6 +60,7 @@ a:hover {
 .formulario input[type="date"],
 .formulario input[type="time"],
 .formulario input[type="number"],
+.formulario input[type="integer"],
 .formulario select {
 	padding: 15px;
 	font-family: 'Raleway', sans-serif;

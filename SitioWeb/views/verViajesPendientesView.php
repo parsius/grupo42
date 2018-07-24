@@ -59,9 +59,12 @@
                      	 $destino= $row['destino'];
                      	 $hora=$row['hora'];
                      	 $fecha=$row['fecha'];
-                     	 $user=$row['idusuario2']; 
-                  	  }
+                     	 $fechallegada=$row['fechallegada'];
+                     	 $user=$row['idusuario2'];
+                     	 $estado=$row['estado'];
 
+                  	  }
+                  	if($estado == 2){
 					if($post['aceptado']==0){?>
 					<h2>Viaje con destino a:</h2>
 					<h2 class="titulo"><?php echo $destino; ?></h2>
@@ -69,6 +72,8 @@
 					<h2 class="titulo"><?php echo $hora; ?></h2>
 					<h2>Fecha de salida:</h2>
 					<h2 class="titulo"><?php echo $fecha; ?></h2>
+					<h2>Fecha de llegada:</h2>
+					<h2 class="titulo"><?php echo $fechallegada; ?></h2>
 					<h2>Del usuario:</h2>
 					<h2 class="titulo"><?php echo $user; ?></h2>
 					<h2>Aceptado</h2>
@@ -79,11 +84,26 @@
 					<h2 class="titulo"><?php echo $hora; ?></h2>
 					<h2>Fecha de salida:</h2>
 					<h2 class="titulo"><?php echo $fecha; ?></h2>
+					<h2>Fecha de llegada:</h2>
+					<h2 class="titulo"><?php echo $fechallegada; ?></h2>
 					<h2>Del usuario:</h2>
 					<h2 class="titulo"><?php echo $user; ?></h2>
 					<h2>Pendiente</h2>
-					<?php } ?>
+					<?php }  ?>
 					<a href="eliminarmeComoCopiloto.php?id=<?php echo $post['idviaje'];?>&idpost=<?php echo $post['idpostulante'];?>">Eliminarme como copiloto de este viaje</a>
+					<?php }else{ ?>
+					<h2>Viaje con destino a:</h2>
+					<h2 class="titulo"><?php echo $destino; ?></h2>
+					<h2>Hora del viaje:</h2>
+					<h2 class="titulo"><?php echo $hora; ?></h2>
+					<h2>Fecha de salida:</h2>
+					<h2 class="titulo"><?php echo $fecha; ?></h2>
+					<h2>Fecha de llegada:</h2>
+					<h2 class="titulo"><?php echo $fechallegada; ?></h2>
+					<h2>Del usuario:</h2>
+					<h2 class="titulo"><?php echo $user; ?></h2>
+					<h2>Viaje Finalizado</h2>
+					<?php } ?>
 
 			<!--		<a href="borrarVehiculo.php?id=<?php echo $post['dominio']; ?>">Borrar</a> !-->
 				</article>

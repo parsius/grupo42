@@ -10,7 +10,9 @@
 		$tipo=$_POST['tipo'];
 		$destino=$_POST['destino'];
 		$fecha=$_POST['fecha'];
+		$fechaLlegada=$_POST['fechallegada'];
 		$patente=$_POST['dominio'];
+		$precio=$_POST['precio'];
 		$vehiculoUsado=1;
 		
 	//	echo "$usuario" . "$password" . "$password2";
@@ -40,7 +42,7 @@
 			}
 		}
 		if($errores==''){
-			$statement=$conexion->prepare('INSERT INTO viajes(id,origen,destino,fecha,tipo,hora,idusuario2,idauto2,capacidad) VALUES (null,:origen,:destino,:fecha,:tipo,:hora,:id,:idauto,:capacidad)');
+			$statement=$conexion->prepare('INSERT INTO viajes(id,origen,destino,fecha,tipo,hora,idusuario2,idauto2,capacidad,fechallegada,precio) VALUES (null,:origen,:destino,:fecha,:tipo,:hora,:id,:idauto,:capacidad,:fechallegada,:precio)');
 			$statement->execute(array(
 				':origen'=>$origen,
 				':destino'=>$destino,
@@ -50,7 +52,9 @@
 				':id'=>$user,
 				':idauto'=>$patente,
 				':capacidad'=>$capacidad,
-				));
+				':precio'=>$precio,
+				':fechallegada'=>$fechaLlegada));
+			
 	    		$statement2 = $conexion->prepare('UPDATE vehiculos SET enuso = :enuso WHERE dominio = :dom ');
 	    		$statement2->execute(array(':dom'=>$patente,
 	    			':enuso'=>$vehiculoUsado));	

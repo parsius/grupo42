@@ -3,10 +3,11 @@
 	session_start();
 	$idpostulante=$_SESSION['usuario'];
 	$errores='';
-//	$idviaje=$_GET['id'];
-	if($_SERVER['REQUEST_METHOD'] == 'POST'){
-		$idviaje=$_POST['idviaje'];
-		$idpiloto=$_POST['idpiloto'];
+	$idviaje=$_GET['id'];
+	$idpiloto=$_GET['user'];
+//	if($_SERVER['REQUEST_METHOD'] == 'POST'){
+	//	$idviaje=$_POST['idviaje'];
+	//	$idpiloto=$_POST['idpiloto'];
 		try{
 			$conexion=new PDO('mysql:host=localhost;dbname=aventon','root','');
 //			$stat = $conexion->prepare('SELECT * FROM postulantes WHERE idpostulante = :idpiloto LIMIT 1 ');
@@ -45,8 +46,8 @@
 			
 		}
 		
-	}
+//	}
 
-	require 'views/postularseView.php';
+//	require 'views/postularseView.php';
 
 ?>

@@ -37,6 +37,7 @@
 									<li><a href="../SitioWeb/publicarViaje.php">Publicar viaje</a></li>
 									<li><a href="../SitioWeb/admin/index.php">Listar vehiculos</a></li>
 									<li><a href="../SitioWeb/listarMisViajes.php">Listar mis viajes</a></li>
+									<li><a href="../SitioWeb/listarMisViajesFinalizados.php">Listar mis viajes Finalizados</a></li>
 									<li><a href="../SitioWeb/verViajesPendientes.php">Viajes pendientes/aprobados</a></li>
 									<li><a href="../SitioWeb/misMensajes.php?ficha=<?php echo $_SESSION['usuario'];?>">Mensajes</a></li>
 									<li><?php echo $_SESSION['usuario']?></li>

@@ -24,6 +24,11 @@
 		$inicio= (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina: 0;
 		$statement=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM viajes WHERE estado = '2' ");
 		$statement->execute();
+		// Obtengo los viajes finalizados para obtener la patente del vehiculo utilizado en ese viaje //
+		$statement3=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM viajes WHERE estado = '0' ");
+		$statement3->execute();
+		$result2= $statement3->fetchAll();
+		// aca termina //
 		$result= $statement->fetchAll();
 		foreach($result as $row){
 			$fechaLlegadaViaje=$row['fechallegada'];
@@ -31,6 +36,17 @@
 			if($fechaLlegadaViaje <= $fecha_act){
 				$statement2=$conexion->prepare("UPDATE viajes SET estado = '0' WHERE id = '$id' ");
 				$statement2->execute();
+
+				// Aca sigue: una vez obtenido los viajes finalizados busco la patente de ese vehiculo utilizado en el viaje //
+				foreach($result2 as $row2){
+					$patente=$row2['idauto2'];
+					$enuso=$row2['enuso'];
+					if($enuso == 1){
+						// Con esta patente cambio el estado del vehiculo de utilizado a no utilizado cuando finaliza el viaja osea cuando estado es 0 //
+						$statement4=$conexion->prepare("UPDATE vehiculos SET enuso = '0' WHERE dominio = '$patente' ");
+						$statement4->execute();
+					}
+				}
 			}
 		}
 		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM viajes WHERE estado = '2' AND fechallegada > '$fecha_act' ORDER BY id DESC LIMIT $inicio, $post_por_pagina ");
@@ -60,6 +76,14 @@
 	function obtener_post_de_viajes($post_por_pagina,$conexion,$id){
 		$inicio= (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina: 0;
 		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM viajes WHERE idusuario2 = '$id' AND estado = '2' LIMIT $inicio, $post_por_pagina");
+		//$sentencia->execute(array('nombre' => $id));
+		$sentencia->execute();
+		return $sentencia->fetchAll();
+	}
+
+	function obtener_post_de_viajes_finalizados($post_por_pagina,$conexion,$id){
+		$inicio= (pagina_actual() > 1) ? pagina_actual() * $post_por_pagina - $post_por_pagina: 0;
+		$sentencia=$conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM viajes WHERE idusuario2 = '$id' AND estado = '0' LIMIT $inicio, $post_por_pagina");
 		//$sentencia->execute(array('nombre' => $id));
 		$sentencia->execute();
 		return $sentencia->fetchAll();

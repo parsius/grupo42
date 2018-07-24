@@ -17,6 +17,7 @@
 				<div class="form-group">
 					<i class="icono izquierda fa fa-user"></i><input type="text" name="origen" class="usuario" placeholder="Origen de salida">
 				</div>
+				<h2>Hora de salida: </h2>
 				<div class="form-group">
 					<i class="icono izquierda fa fa-user"></i><input type="time" name="hora" class="usuario" placeholder="hora de salida">
 				</div>
@@ -49,9 +50,19 @@
 				<div class="form-group">
 					<i class="icono izquierda fa fa-user"></i><input type="text" name="destino" class="usuario" placeholder="Destino del viaje">
 				</div>
+				<h2>Fecha de salida: </h2>
 				<div class="form-group">
-					<i class="icono izquierda fa fa-user"></i><input type="date" name="fecha" class="password_btn" 
+					<i class="icono izquierda fa fa-user"></i><input type="date" name="fecha" class="usuario" 
 					placeholder="Fecha del viaje">
+				</div>
+				<h2>Fecha de llegada: </h2>
+				<div class="form-group">
+					<i class="icono izquierda fa fa-user"></i><input type="date" name="fechallegada" class="password_btn" 
+					placeholder="Fecha de llegada">
+				</div>
+				<div class="form-group">
+					<i class="icono izquierda fa fa-user"></i><input type="number" name="precio" class="password_btn" 
+					placeholder="Precio del viaje">
 					<i class="submit-btn fa fa-arrow-right" onclick="login.submit()"></i>
 				</div>
 				<?php if(!empty($errores)):?>
