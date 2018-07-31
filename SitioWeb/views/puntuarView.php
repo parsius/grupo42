@@ -8,6 +8,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo RUTA ?>/css/estilos.css">
+        <link rel="stylesheet" href="<?php echo RUTA ?>/css/estilos2.css">
 		<title>Aventon</title>
 	</head>
 	<body>
@@ -30,11 +31,11 @@
 									<li><a href="#">Ver perfil</a></li>
 									<li><a href="../login_registro/crearVehiculo.php">Crear vehiculo</a></li>
 									<li><a href="../SitioWeb/publicarViaje.php">Publicar viaje</a></li>
+									<li><a href="../SitioWeb/borrarVehiculo.php">Borrar vehiculo</a></li>
 									<li><a href="../SitioWeb/admin/index.php">Listar vehiculos</a></li>
 									<li><a href="../SitioWeb/listarMisViajes.php">Listar mis viajes</a></li>
 									<li><a href="../SitioWeb/verViajesPendientes.php">Viajes pendientes/aprobados</a></li>
 									<li><a href="../SitioWeb/misMensajes.php?ficha=<?php echo $_SESSION['usuario'];?>">Mensajes</a></li>
-
 									<li><?php echo $_SESSION['usuario']?></li>
 								
 								
@@ -49,44 +50,37 @@
 			<?php foreach ($posts as $post): ?>
 				<div class="post">
 				<article>
-					<?php if($post['estado'] == 2){ ?>
-                    <h2>Origen:</h2>
-					<h2 class="titulo"><?php echo $post['origen']; ?></h2>
-					<h2>Destino:</h2>
-					<h2 class="titulo"><?php echo $post['destino']; ?></h2>
-					<h2>Fecha:</h2>
-					<h2 class="titulo"><?php echo $post['fecha']; ?></h2>
-					<h2>Tipo:</h2>
-					<h2 class="titulo"><?php echo $post['tipo']; ?></h2>
-					<h2>Horario de salida:</h2>
-					<h2 class="titulo"><?php echo $post['hora']; ?></h2>
-					<h2>Capacidad:</h2>
-					<h2 class="titulo"><?php echo $post['capacidad']; ?></h2>
-					<a href="puntuar.php?id=<?php echo $post['id']; ?>">Puntuar</a>
-					
-			    <?php }else{ ?>
-                    <h2>Origen:</h2>
-					<h2 class="titulo"><?php echo $post['origen']; ?></h2>
-					<h2>Destino:</h2>
-					<h2 class="titulo"><?php echo $post['destino']; ?></h2>
-					<h2>Fecha:</h2>
-					<h2 class="titulo"><?php echo $post['fecha']; ?></h2>
-					<h2>Tipo:</h2>
-					<h2 class="titulo"><?php echo $post['tipo']; ?></h2>
-					<h2>Horario de salida:</h2>
-					<h2 class="titulo"><?php echo $post['hora']; ?></h2>
-					<h2>Capacidad:</h2>
-					<h2 class="titulo"><?php echo $post['capacidad']; ?></h2>
-					<a href="elegirPostulantes.php?id=<?php echo $post['id']; ?>">Elegir Postulantes</a>
-					<a href="editarViaje.php?id=<?php echo $post['id']; ?>">Editar</a>
-					<a href="cancelarViaje.php?id=<?php echo $post['id']; ?>">Cancelar viaje</a>
-					<a href="verCopilotosAceptados.php?id=<?php echo $post['id'];?>">Ver copilotos aceptados</a>
-			 <?php } ?>
-				</article>
+					<h2>Usuario aceptado en el viaje:</h2>
+					<h2 class="titulo"><?php echo $post['idpostulante']; ?></h2>
+					<a href="eliminarCopilotoSeleccionado.php?id=<?php echo $post['idviaje'];?>&idpost=<?php echo $post['idpostulante'];?>">Eliminar copiloto</a>
+				
+                     <form>
+  
+    <p class="clasificacion" method="post" enctype="multipart/form-data"  action="registrarPuntaje.php">
+    <input id="radio1" type="radio" name="estrellas" value="5"><!--
+    --><label for="radio1">★</label><!--
+    --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+    --><label for="radio2">★</label><!--
+    --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+    --><label for="radio3">★</label><!--
+    --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+    --><label for="radio4">★</label><!--
+    --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+    --><label for="radio5">★</label>
+        <input type="hidden" name="id" value="<?php echo $post['idpostulante']; ?>">
+   <input type="submit" value="puntuar">
+                         
+    </p>
+        
+</form>
+                    
+                    
+                </article>
 				</div>
+           
 
 			<?php endforeach; ?>
 			
-			<?php require 'paginacionParaMisViajes.php'?>
+			<?php require 'paginacionParaPostulantes.php'?>
 		</div>
 <?php require 'footer.php';?>
