@@ -32,6 +32,10 @@
 				<div class="form-group">
 					<i class="icono izquierda fa fa-user"></i><input type="email" name="email" class="usuario" placeholder="Email">
 				</div>
+				<h2>Pregunta de seguridad</h2>
+				<div class="form-group">
+					<i class="icono izquierda fa fa-lock"></i><input type="text" name="pregunta" class="usuario" placeholder="¿Como se llama tu mamá?">
+				</div>
 				<div class="form-group">
 					<i class="icono izquierda fa fa-lock"></i><input minlength="6" maxlength="10" type="password" name="password" class="password" placeholder="Contraseña">
 				</div>

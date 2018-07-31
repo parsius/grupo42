@@ -7,19 +7,25 @@
 		<link href="https://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type='text/css'> 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../SitioWeb/css/estiloRegistro2.css">
-		<title>Iniciar Sesion</title>
+		<title>Verificar tarjeta</title>
 	</head>
 	<body>
 		<div class="contenedor">
-			<h1 class="titulo">Iniciar Sesion</h1>
+			<h1 class="titulo">Ingrese los datos de su tarjeta de credito</h1>
 			<hr class="border">
 			<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="formulario" name="login">
+				<h2>El viaje solo se le cobrara si usted es aceptado y el viaje fue finalizado</h2>
 				<div class="form-group">
-					<i class="icono izquierda fa fa-user"></i><input type="text" name="usuario" class="usuario" placeholder="Usuario">
+					<i class="icono izquierda fa fa-user"></i><input type="text" name="nombre" class="usuario" placeholder="Nombre y apellido del titular">
 				</div>
 				<div class="form-group">
-					<i class="icono izquierda fa fa-lock"></i><input type="password" name="password" class="password_btn" 
-					placeholder="Contraseña">
+					<i class="icono izquierda fa fa-user"></i><input type="text" name="tipo" class="usuario" placeholder="Tipo de tarjeta (ej: visa,master,ect)">
+				</div>
+				<div class="form-group">
+					<i class="icono izquierda fa fa-user"></i><input type="integer" name="ntarjeta" class="usuario" placeholder="Numero de la tarjeta">
+				</div>
+				<div class="form-group">
+					<i class="icono izquierda fa fa-user"></i><input type="number" name="codigo" class="usuario" placeholder="Codigo de la tarjeta">
 					<i class="submit-btn fa fa-arrow-right" onclick="login.submit()"></i>
 				</div>
 				<?php if(!empty($errores)):?>
@@ -31,11 +37,7 @@
 				<?php endif;?>
 			</form>
 			<p class="text-registrate">
-				¿Aun no tienes cuenta?
-				<a href="registrate.php">Registrarse</a>
-			<p class="text-registrate">
-			¿Olvidaste tu contraseña?
-			<a href="recuperarPassword.php">Olvide mi contraseña</a>
+				<a href="index.php">Volver</a>
 		</div>
 		
 	</body>

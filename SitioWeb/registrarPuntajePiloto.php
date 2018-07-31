@@ -7,7 +7,7 @@
 	
 	//	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$puntaje=(int)$_POST['estrellas'];
-		$id=$_POST['id'];
+		$id2=$_POST['id'];
 		require 'functions.php';
 		
 	//	echo "$usuario" . "$password" . "$password2";
@@ -15,7 +15,7 @@
 		if(empty($puntaje)){
 				$errores.='<li>Actualmente no tienes vehiculos para realizar el viaje</li>';
 		}else{
-			     calcular_puntaje($id,$puntaje);
+			     calcular_puntaje($id2,$puntaje);
 				header('Location: listarMisViajes.php');	
 			
 		}

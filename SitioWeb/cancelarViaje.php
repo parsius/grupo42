@@ -3,9 +3,11 @@
 	require 'admin/config.php';
 	require 'functions.php';
 	$conexion=conexion();
-	$us=$_GET['usua'];
+//	$us=$_GET['usua'];
     $idviaje=$_GET['id'];
 	$usuario=$_SESSION['usuario'];
+	
+
 	
 	if(!$conexion){
 		header('Location: error.php');
@@ -14,6 +16,13 @@
 	$conexion=conexion();
 	$conect=$conexion->prepare('SELECT * FROM postulantes WHERE idviaje = :idviaje');
 	$conect->execute(array('idviaje' => $idviaje));
+	 $totalFilas    = $conect->rowCount();
+	 if ($totalFilas >= 1) {
+     $num=2;
+	 calcular_puntaje_cancelado($usuario, $num,$conexion );
+	 }
+
+
 	 //MENSAJE
     $con = mysqli_connect("localhost", "root", "", "aventon") or die ("no se pudo conectar");
         mysqli_select_db($con, 'aventon');

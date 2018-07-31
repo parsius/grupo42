@@ -1,5 +1,5 @@
 <?php session_start();
-
+$cuenta=1;
 if (isset($_SESSION['usuario'])) {
 	header('Location: ../SitioWeb/index.php');
 }
@@ -16,13 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	} catch (PDOException $e) {
 		echo "Error:" . $e->getMessage();;
 	}
-
+   
 	$statement = $conexion->prepare('
-		SELECT * FROM usuario WHERE usuario = :usuario AND pass = :password'
+		SELECT * FROM usuario WHERE usuario = :usuario AND pass = :password AND cuentaactiva = :cuenta' 
 	);
 	$statement->execute(array(
 		':usuario' => $usuario,
-		':password' => $password
+		':password' => $password,
+		':cuenta' => $cuenta
 	));
 
 	$resultado = $statement->fetch();

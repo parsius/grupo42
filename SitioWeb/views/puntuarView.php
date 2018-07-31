@@ -54,10 +54,10 @@
 					<h2 class="titulo"><?php echo $post['idpostulante']; ?></h2>
 					<a href="eliminarCopilotoSeleccionado.php?id=<?php echo $post['idviaje'];?>&idpost=<?php echo $post['idpostulante'];?>">Eliminar copiloto</a>
 				
-                     <form>
+                     <form  class="clasificacion" method="POST" enctype="multipart/form-data" name="login" action="registrarPuntaje.php">
   
-    <p class="clasificacion" method="post" enctype="multipart/form-data"  action="registrarPuntaje.php">
-    <input id="radio1" type="radio" name="estrellas" value="5"><!--
+   
+    <input id="radio1" type="radio" name="estrellas" value="5" ><!--
     --><label for="radio1">★</label><!--
     --><input id="radio2" type="radio" name="estrellas" value="4"><!--
     --><label for="radio2">★</label><!--
@@ -68,9 +68,9 @@
     --><input id="radio5" type="radio" name="estrellas" value="1"><!--
     --><label for="radio5">★</label>
         <input type="hidden" name="id" value="<?php echo $post['idpostulante']; ?>">
-   <input type="submit" value="puntuar">
+   <input type="submit" value="puntuar" >
                          
-    </p>
+   
         
 </form>
                     

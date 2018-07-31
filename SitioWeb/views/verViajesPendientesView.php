@@ -8,6 +8,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo RUTA ?>/css/estilos.css">
+		<link rel="stylesheet" href="<?php echo RUTA ?>/css/estilos2.css">
 		<title>Aventon</title>
 	</head>
 	<body>
@@ -52,6 +53,7 @@
 				<article>
 					<?php 
 					  $idpost=$post['idviaje'];
+					  $aceptado=$post['aceptado'];
                       $sentencia=$conexion->prepare("SELECT * FROM viajes WHERE id = '$idpost' ");
 					  $sentencia->execute();
 					  $result= $sentencia->fetchAll();
@@ -62,10 +64,10 @@
                      	 $fechallegada=$row['fechallegada'];
                      	 $user=$row['idusuario2'];
                      	 $estado=$row['estado'];
-
+                     	 
                   	  }
                   	if($estado == 2){
-					if($post['aceptado']==0){?>
+					if($aceptado == 0){?>
 					<h2>Viaje con destino a:</h2>
 					<h2 class="titulo"><?php echo $destino; ?></h2>
 					<h2>Hora del viaje:</h2>
@@ -103,6 +105,21 @@
 					<h2>Del usuario:</h2>
 					<h2 class="titulo"><?php echo $user; ?></h2>
 					<h2>Viaje Finalizado</h2>
+					    <form  class="clasificacion" method="POST" enctype="multipart/form-data" name="login" action="registrarPuntajePiloto.php">
+  
+   
+    <input id="radio1" type="radio" name="estrellas" value="5" ><!--
+    --><label for="radio1">★</label><!--
+    --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+    --><label for="radio2">★</label><!--
+    --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+    --><label for="radio3">★</label><!--
+    --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+    --><label for="radio4">★</label><!--
+    --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+    --><label for="radio5">★</label>
+        <input type="hidden" name="id" value="<?php echo $row['idusuario2']; ?>">
+   <input type="submit" value="puntuar" >
 					<?php } ?>
 
 			<!--		<a href="borrarVehiculo.php?id=<?php echo $post['dominio']; ?>">Borrar</a> !-->
@@ -111,6 +128,6 @@
 
 			<?php endforeach; ?>
 			
-			<?php require 'paginacionParaMisViajes.php'?>
+			<?php require 'paginacionParaViajesPendientes.php'?>
 		</div>
 <?php require 'footer.php';?>

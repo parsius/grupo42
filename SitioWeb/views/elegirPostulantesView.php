@@ -51,6 +51,12 @@
 				<article>
 					<h2>Usuario postulado al viaje:</h2>
 					<h2 class="titulo"><?php echo $post['idpostulante']; ?></h2>
+					<h2>Puntuacion:</h2>
+					<h2 class="titulo"><?php 
+                    
+                    
+                    $num=consultar_puntaje($post['idpostulante']);
+					echo $num; ?></h2>
 					<a href="aceptarPostulante.php?id=<?php echo $post['idviaje'];?>&idpost=<?php echo $post['idpostulante'];?>">Aceptar</a>
 					<a href="rechazarPostulante.php?id=<?php echo $post['idviaje'];?>&idpost=<?php echo $post['idpostulante'];?>">Rechazar</a>
 			<!--		<a href="borrarVehiculo.php?id=<?php echo $post['dominio']; ?>">Borrar</a> !-->

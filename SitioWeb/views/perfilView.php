@@ -1,5 +1,6 @@
 
 <?php   
+require '../functions.php';
 class perfil{
     function recuperarDatos($id){
         $con = mysqli_connect("localhost", "root", "", "aventon") or die ("no se pudo conectar");
@@ -11,13 +12,15 @@ class perfil{
 
         <table> 
             <?php
+            $puntaje=consultar_puntaje($id);
         while ($rs = mysqli_fetch_array($resultado)){
             echo "<tr>" 
            ."<tr>"."<td>"."USUARIO: ".$rs['usuario']."</td>"."</tr>" 
            ."<tr>"."<td>"."NOMBRE: ".$rs['nombre']."</td>"."</tr>" 
            ."<tr>"."<td>"."APELLIDO: ".$rs['apellido']."</td>"."</tr>" 
            ."<tr>"."<td>"."CUMPLEAÑOS: ".$rs['fecha']."</td>"."</tr>" 
-           ."<tr>"."<td>"."EMAIL: ".$rs['email']."</td>"."</tr>" 
+           ."<tr>"."<td>"."EMAIL: ".$rs['email']."</td>"."</tr>"
+           ."<tr>"."<td>"."PUNTUACION: ".$puntaje."</td>"."</tr>" 
            ."</tr>"; 
             }
         ?>

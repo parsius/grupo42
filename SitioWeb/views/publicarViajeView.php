@@ -7,12 +7,13 @@
 		<link href="https://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type='text/css'> 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/estiloRegistro2.css">
-		<title>Registrate</title>
+		<title>Publicar viaje</title>
 	</head>
 	<body>
 		<div class="contenedor">
 			<h1 class="titulo">Publicar viaje</h1>
 			<hr class="border">
+		
 			<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="formulario" name="login">
 				<div class="form-group">
 					<i class="icono izquierda fa fa-user"></i><input type="text" name="origen" class="usuario" placeholder="Origen de salida">

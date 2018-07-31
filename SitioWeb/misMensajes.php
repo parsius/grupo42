@@ -8,8 +8,10 @@
 		header('Location: error.php');
 	}
 	
-	$mensajes = obtener_post_de_mensajes($conexion,$usuario);
-
+	$mensajes = obtener_post_de_mensajes($conexion,$usuario,$blog_config['post_por_pagina']);
+	if(!$mensajes){
+		header('Location: index.php');
+	}
 
 	require 'views/mensajesView.php';
 ?>

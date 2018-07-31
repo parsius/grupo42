@@ -7,15 +7,12 @@
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="http://localhost/CursoPHP/Practicas/SitioWeb/css/estilos.css">
+		<link rel="stylesheet" href="<?php echo RUTA ?>/css/estilos.css">
 		<title>Aventon</title>
 	</head>
 	<body>
 		<header>
-			 <?php $id= $_GET['ficha'];
-              
-            ?>
-            <div class="contenedor">
+			<div class="contenedor">
 				<div class="logo izquierda">
 					<p><a href="<?php echo RUTA ;?>">Aventon</a></p>
 				</div>
@@ -35,8 +32,10 @@
 									<li><a href="../SitioWeb/publicarViaje.php">Publicar viaje</a></li>
 									<li><a href="../SitioWeb/borrarVehiculo.php">Borrar vehiculo</a></li>
 									<li><a href="../SitioWeb/admin/index.php">Listar vehiculos</a></li>
-									<li><a href="../SitioWeb/listarMisViajes.php">Mensajes</a></li>
-									<li><?php echo $id ?></li>
+									<li><a href="../SitioWeb/listarMisViajes.php">Listar mis viajes</a></li>
+									<li><a href="../SitioWeb/verViajesPendientes.php">Viajes pendientes/aprobados</a></li>
+									<li><a href="../SitioWeb/misMensajes.php?ficha=<?php echo $_SESSION['usuario'];?>">Mensajes</a></li>
+									<li><?php echo $_SESSION['usuario']?></li>
 								
 								
 						</ul>
@@ -47,28 +46,20 @@
 		<div class="contenedor">
 			<h2>
 			</h2>	
-			<?php if (empty($mensajes)){?>
-            <div class="post">
-				<article>
-					<h2>Mensaje:</h2>
-					<h2 class="titulo">"No hay mensajes por ver"</h2>
-					
-				</article>
-				</div>
+			
             
-           <?php }else{  
+           <?php  
              foreach ($mensajes as $mensaje): ?>
 				<div class="post">
 				<article>
 					<h2>MENSAJE:</h2>
-					<h2 class="titulo"><?php echo $mensaje['mensaje']; ?></h2>
-					
+					<h2 class="titulo"><?php echo $mensaje['mensaje']; ?></h2>	
 				</article>
 				</div>
 
 			<?php endforeach;
-}
-			 require 'paginacionParaMensajes.php'?>
+
+			 require 'paginacionParaMensajes.php';?>
             
 		</div>
 <?php require 'footer.php';?>

@@ -12,7 +12,8 @@
         $query = "SELECT usuario FROM usuario WHERE usuario = '$id'";
         $resultado = mysqli_query($con, $query);
         $totalFilas    =    mysqli_num_rows($resultado); 
-        if ($totalFilas == 0){  
+        $rs= mysqli_fetch_all($resultado);
+        if ($totalFilas == 0 AND $rs['mail'] !== $modelo){  
         //MODIFICO EL NOMBRE EN LAS TABLAS
          $conexion=conexion();
          $statemen = $conexion->prepare('UPDATE usuario SET usuario = :id WHERE usuario = :usuario ');
@@ -49,7 +50,7 @@
 	//dominio= usuario, capacidad=nombre, tipo= apellido, modelo= email
 
 	require '../views/editarView.php';
-        }else{header('Location: ' . RUTA . '/index.php');}
+        } else{header('Location: ' . RUTA . '/errorPerfil.php');}
 
 
 ?>

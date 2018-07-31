@@ -7,7 +7,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="<?php echo RUTA ?>/css/estilos.css">
+		<link rel="stylesheet" href="../SitioWeb/css/estilos.css">
 		<title>Aventon</title>
 	</head>
 	<body>
@@ -52,4 +52,57 @@
 				</div>
 			</div>
 		</header>
-		                     
+		
+
+<h1>Menu De yuda</h1>
+<p></p>
+<h2>Contacto:</h2p>
+<h1>En esta pestaña usted podra consultar directamente con nosotros sobre algun problema o inconveniente secedido.</h1>
+<p></p>
+<p></p>
+<p></p>
+<h2>Cerrar Cesion</h2>
+<h4>Con cerrar cession usted podra desloguearse de la pagina</h4>
+<p></p>
+<p></p>
+<p></p>
+<h2>Ver Perfi</h2>
+<h4>Con ver perfil podra consultar su perfil, modificarlo o borrar su cuenta si lo desea.</h4>
+<p></p>
+<p></p>
+<p></p>
+<h2>Crear Vehiculo</h2>
+<h4>Con esta opcion usted ira a una plantilla donde creara el vehculo para su viaje, es necesario al menos un vehiculo para que usted pueda publicar un viaje</h4>
+<p></p>
+<p></p>
+<p></p>
+<h2>Publicar Viaje</h2>
+<h4>Con esta opcion usted publicara viajes a los cuales se le sumara usuarios. Recuerde que para esto necesita un auto creado y dar una tarjeta de credito como forma de pago, el cual solo se descontar si se da por finalizado el viaje</h44>
+<p></p>
+<p></p>
+<p></p>
+<h2>Listar Vehiculos</h2>
+<h4>Listara los vehiculos registrados a su nombre.</h4>
+<p></p>
+<p></p>
+<p></p>
+<h2>Listar Mis Viajes</h2>
+<h4>Listara los viajes que usted a publicado, para tener un control de los postulantes.</h4>
+<p></p>
+<p></p>
+<p></p>
+<h2>Viajes Pendientes/aprobados</h2>
+<h4>Lista los viajes a los que usted se postulo, es donde sabra si fue aceptado o rechazado de un viaje</h4>
+<p></p>
+<p></p>
+<p></p>
+<h2>Mensajes</h2>
+<h4>Mustra los mensajes con respecto a los cambios en un viaje, le dira si usted fue acpetado, rechazado y los cobros de la tarjeta a viajes finalizados.</h4>
+
+
+
+
+
+
+
+<?php require '../SitioWeb/views/footer.php';?>

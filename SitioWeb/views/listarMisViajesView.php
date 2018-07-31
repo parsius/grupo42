@@ -49,7 +49,7 @@
 			<?php foreach ($posts as $post): ?>
 				<div class="post">
 				<article>
-					<?php if($post['estado'] == 2){ ?>
+					<?php if($post['estado'] == 0){ ?>
                     <h2>Origen:</h2>
 					<h2 class="titulo"><?php echo $post['origen']; ?></h2>
 					<h2>Destino:</h2>

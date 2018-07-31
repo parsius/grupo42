@@ -59,6 +59,7 @@
             $Con->recuperarDatos($id);
             ?>
         <li><a href="editarPerfilView.php?ficha=<?php echo $id; ?>">EDITAR</a></li>
+         <li><a href="../borrarCuenta.php?user=<?php echo $id; ?>">Borrar cuenta</a></li>
             </div>
             </div>
             </article>

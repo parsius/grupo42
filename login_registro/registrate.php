@@ -13,6 +13,7 @@
 		$apellido=$_POST['apellido'];
 		$fecha=$_POST['fecha'];
 		$email=$_POST['email'];
+		$pregunta=$_POST['pregunta'];
 		
 	//	echo "$usuario" . "$password" . "$password2";
 		$errores='';
@@ -45,8 +46,8 @@
 
 		}
 		if($errores==''){
-			$statement=$conexion->prepare('INSERT INTO usuario(id,nombre,usuario,apellido,email,pass,dni,fecha) VALUES (null,:nombre,:usuario,:apellido,
-			:email, :pass, :dni, :fecha)');
+			$statement=$conexion->prepare('INSERT INTO usuario(id,nombre,usuario,apellido,email,pass,dni,fecha,preguntaseguridad) VALUES (null,:nombre,:usuario,:apellido,
+			:email, :pass, :dni, :fecha, :pregunta)');
 			$statement->execute(array(
 				':usuario'=>$usuario,
 				':pass'=>$password,
@@ -55,7 +56,7 @@
 				':apellido'=>$apellido,
 				':email'=>$email,
 				':fecha'=>$fecha,
-				));
+				':pregunta'=>$pregunta));
 			header('Location: login.php');
 		}
 		
